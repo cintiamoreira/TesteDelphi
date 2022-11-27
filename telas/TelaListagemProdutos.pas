@@ -24,7 +24,6 @@ type
     procedure btnEditarClick(Sender: TObject);
     procedure btnDeletarClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
   procedure AbrirTelaCadastro(estadoInicial: TEstadoCadastro; produtoInicial: TProdutos);
     { Private declarations }
@@ -83,11 +82,6 @@ begin
   qryListagem.Connection := dtmPrincipal.ConexaoDB;
   dtsListagem.DataSet := qryListagem;
   grdListagem.DataSource:=dtsListagem;
-end;
-procedure TfrmTelaListagemProdutos.FormShow(Sender: TObject);
-begin
-  inherited;
-  QryListagem.Refresh
 end;
 
 procedure TfrmTelaListagemProdutos.grdListagemDblClick(Sender: TObject);

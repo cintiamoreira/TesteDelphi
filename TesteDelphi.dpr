@@ -10,7 +10,8 @@ uses
   cClientes in 'classes\cClientes.pas',
   cPedidos in 'classes\cPedidos.pas',
   cProdutos in 'classes\cProdutos.pas',
-  TelaListagemProdutos in 'telas\TelaListagemProdutos.pas' {frmTelaListagemProdutos};
+  TelaListagemProdutos in 'telas\TelaListagemProdutos.pas' {frmTelaListagemProdutos},
+  TelaCadastroProdutos in 'telas\TelaCadastroProdutos.pas' {frmTelaCadastroProdutos};
 
 {$R *.res}
 
@@ -19,5 +20,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmTelaListagemProdutos, frmTelaListagemProdutos);
+  Application.CreateForm(TfrmTelaCadastroProdutos, frmTelaCadastroProdutos);
   Application.Run;
 end.
