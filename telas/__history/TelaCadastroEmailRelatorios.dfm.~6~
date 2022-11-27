@@ -1,0 +1,68 @@
+inherited frmTelaCadastroEmailRelatorios: TfrmTelaCadastroEmailRelatorios
+  Caption = 'CADASTRO DE EMAIL PARA RECEBER RELAT'#211'RIOS'
+  ClientHeight = 222
+  ClientWidth = 471
+  ExplicitWidth = 487
+  ExplicitHeight = 261
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    Width = 471
+    Height = 158
+    ExplicitLeft = 0
+    ExplicitTop = 0
+    ExplicitHeight = 472
+    object lblNomeCompleto: TLabel
+      Left = 50
+      Top = 40
+      Width = 75
+      Height = 13
+      Caption = 'Nome Completo'
+    end
+    object lblEmail: TLabel
+      Left = 98
+      Top = 82
+      Width = 30
+      Height = 13
+      Caption = 'EMAIL'
+    end
+    object edtNomeCompleto: TEdit
+      Left = 146
+      Top = 37
+      Width = 303
+      Height = 21
+      TabOrder = 0
+    end
+    object edtEmail: TEdit
+      Left = 146
+      Top = 79
+      Width = 303
+      Height = 21
+      TabOrder = 1
+    end
+  end
+  inherited Panel2: TPanel
+    Top = 158
+    Width = 471
+    inherited btnOK: TBitBtn
+      Left = 119
+      Anchors = [akRight, akBottom]
+      OnClick = btnOKClick
+    end
+    inherited btnCancelar: TBitBtn
+      Left = 200
+      Anchors = [akRight, akBottom]
+      Visible = False
+    end
+    inherited btnEditar: TBitBtn
+      Left = 281
+      Anchors = [akRight, akBottom]
+      Visible = False
+    end
+    inherited btnSair: TBitBtn
+      Left = 362
+      Anchors = [akRight, akBottom]
+      OnClick = btnSairClick
+    end
+  end
+end

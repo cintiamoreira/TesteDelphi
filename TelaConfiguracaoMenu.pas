@@ -25,6 +25,8 @@ type
     procedure btnBuscarImagemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCadastrarEmailClick(Sender: TObject);
+    procedure btnSairClick(Sender: TObject);
+    procedure btnProgramaBandejaClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -74,6 +76,16 @@ begin
   frmTelaCadastroEmailRelatorios := TfrmTelaCadastroEmailRelatorios.Create(Self);
   frmTelaCadastroEmailRelatorios.ShowModal;
   frmTelaCadastroEmailRelatorios.Release;
+end;
+
+procedure TfrmTelaConfiguracaoMenu.btnProgramaBandejaClick(Sender: TObject);
+begin
+  Application.Minimize;
+end;
+
+procedure TfrmTelaConfiguracaoMenu.btnSairClick(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TfrmTelaConfiguracaoMenu.FormCreate(Sender: TObject);

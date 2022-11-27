@@ -9,6 +9,12 @@ uses
 
 type
   TfrmTelaCadastroEmailRelatorios = class(TfrmTelaHerancaCadastro)
+    edtNomeCompleto: TEdit;
+    lblNomeCompleto: TLabel;
+    lblEmail: TLabel;
+    edtEmail: TEdit;
+    procedure btnOKClick(Sender: TObject);
+    procedure btnSairClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -21,5 +27,21 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmTelaCadastroEmailRelatorios.btnOKClick(Sender: TObject);
+begin
+  inherited;
+    if (edtNomeCompleto.Text='') OR (edtEmail.Text='') then begin
+         ShowMessage('Nome Completo ou Email são campos Obrigatórios');
+         Close;
+    end  else
+       ShowMessage('CADASTRADO com sucesso');
+end;
+
+procedure TfrmTelaCadastroEmailRelatorios.btnSairClick(Sender: TObject);
+begin
+  inherited;
+  Close;
+end;
 
 end.

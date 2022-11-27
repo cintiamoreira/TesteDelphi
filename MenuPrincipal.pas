@@ -13,7 +13,7 @@ uses
    Registry, WinProcs;
 
 type
-  TfrmPrincipal = class(TForm)
+    TfrmPrincipal = class(TForm)
     mainPrincipal: TMainMenu;
     menuMenu: TMenuItem;
     menuConfiguracao: TMenuItem;

@@ -18,8 +18,8 @@ object frmPrincipal: TfrmPrincipal
   TextHeight = 19
   object imgBackground: TImage
     AlignWithMargins = True
-    Left = 9
-    Top = 29
+    Left = 21
+    Top = 41
     Width = 771
     Height = 515
     Align = alCustom

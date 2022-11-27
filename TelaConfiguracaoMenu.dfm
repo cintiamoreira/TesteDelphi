@@ -77,8 +77,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Anchors = [akRight, akBottom]
     Caption = 'SAIR'
     TabOrder = 1
-    ExplicitLeft = 438
-    ExplicitTop = 400
+    OnClick = btnSairClick
   end
   object pnlPlanoDeFundo: TPanel
     Left = 10
@@ -136,6 +135,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
       Height = 25
       Caption = 'APLICAR'
       TabOrder = 0
+      OnClick = btnProgramaBandejaClick
     end
   end
   object OpenDialog1: TOpenDialog
