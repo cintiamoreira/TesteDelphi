@@ -5,6 +5,7 @@ object dtmPrincipal: TdtmPrincipal
   object ConexaoDB: TZConnection
     ControlsCodePage = cCP_UTF16
     Catalog = ''
+    Connected = True
     SQLHourGlass = True
     HostName = '.\SQLEXPRESS'
     Port = 0
