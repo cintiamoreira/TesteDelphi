@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
    System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
    Vcl.Menus, uDTMConexao,
-   TelaListagemProdutos, TelaListagemPedidos;
+   TelaListagemProdutos, TelaListagemPedidos, TelaListagemClientes;
 
 type
   TfrmPrincipal = class(TForm)
@@ -63,9 +63,9 @@ end;
 
 procedure TfrmPrincipal.menuCadastrosClientesClick(Sender: TObject);
 begin
-  //frmTelaListagemClientes := TfrmTelaListagemClientes.Create(Self);
-  //frmTelaListagemClientes.ShowModal;
-  //frmTelaListagemClientes.Release;
+  frmTelaListagemClientes := TfrmTelaListagemClientes.Create(Self);
+  frmTelaListagemClientes.ShowModal;
+  frmTelaListagemClientes.Release;
 end;
 
 procedure TfrmPrincipal.menuCadastrosPedidosClick(Sender: TObject);

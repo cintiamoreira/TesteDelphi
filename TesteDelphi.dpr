@@ -13,7 +13,9 @@ uses
   TelaCadastroProdutos in 'telas\TelaCadastroProdutos.pas' {frmTelaCadastroProdutos},
   TelaListagemProdutos in 'telas\TelaListagemProdutos.pas' {frmTelaListagemProdutos},
   TelaCadastroPedidos in 'telas\TelaCadastroPedidos.pas' {frmTelaCadastroPedidos},
-  TelaListagemPedidos in 'telas\TelaListagemPedidos.pas' {frmTelaListagemPedidos};
+  TelaListagemPedidos in 'telas\TelaListagemPedidos.pas' {frmTelaListagemPedidos},
+  TelaCadastroClientes in 'telas\TelaCadastroClientes.pas' {frmTelaCadastroClientes},
+  TelaListagemClientes in 'telas\TelaListagemClientes.pas' {frmTelaListagemClientes};
 
 {$R *.res}
 
@@ -21,9 +23,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmTelaCadastroProdutos, frmTelaCadastroProdutos);
-  Application.CreateForm(TfrmTelaListagemProdutos, frmTelaListagemProdutos);
-  Application.CreateForm(TfrmTelaCadastroPedidos, frmTelaCadastroPedidos);
-  Application.CreateForm(TfrmTelaListagemPedidos, frmTelaListagemPedidos);
   Application.Run;
 end.

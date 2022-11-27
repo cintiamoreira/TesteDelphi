@@ -91,8 +91,8 @@ inherited frmTelaListagemPedidos: TfrmTelaListagemPedidos
     Active = True
     SQL.Strings = (
       'select * from pedidos')
-    Left = 432
-    Top = 78
+    Left = 480
+    Top = 86
     object qryListagemid: TIntegerField
       DisplayLabel = 'ID'
       FieldName = 'id'

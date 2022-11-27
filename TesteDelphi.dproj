@@ -137,6 +137,14 @@
             <Form>frmTelaListagemPedidos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="telas\TelaCadastroClientes.pas">
+            <Form>frmTelaCadastroClientes</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="telas\TelaListagemClientes.pas">
+            <Form>frmTelaListagemClientes</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
