@@ -106,12 +106,12 @@ begin
       frmTelaFiltroRelProdutos := TfrmTelaFiltroRelProdutos.Create(Self);
       frmTelaFiltroRelProdutos.ShowModal;
 
-      frmRelProdutos:=TfrmRelProdutos.Create(Self);
-      frmRelProdutos.QryProdutos.Close;
-      frmRelProdutos.QryProdutos.ParamByName('DataInicio').AsDate := frmTelaFiltroRelProdutos.edtDataInicio.Date;
-      frmRelProdutos.QryProdutos.ParamByName('DataFim').AsDate := frmTelaFiltroRelProdutos.edtDataFim.Date;
-      frmRelProdutos.QryProdutos.Open;
-      frmRelProdutos.Relatorio.PreviewModal;
+      frmRelProdutosPorData:=TfrmRelProdutosPorData.Create(Self);
+      frmRelProdutosPorData.QryProdutos.Close;
+      frmRelProdutosPorData.QryProdutos.ParamByName('DataInicio').AsDate := frmTelaFiltroRelProdutos.edtDataInicio.Date;
+      frmRelProdutosPorData.QryProdutos.ParamByName('DataFim').AsDate := frmTelaFiltroRelProdutos.edtDataFim.Date;
+      frmRelProdutosPorData.QryProdutos.Open;
+      frmRelProdutosPorData.Relatorio.PreviewModal;
   finally
     frmTelaFiltroRelProdutos.Release;
   end;

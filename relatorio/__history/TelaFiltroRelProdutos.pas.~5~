@@ -1,4 +1,4 @@
-unit TelaFiltroRelPedidos;
+unit TelaFiltroRelProdutos;
 
 interface
 
@@ -8,12 +8,12 @@ uses
   RxToolEdit;
 
 type
-  TfrmTelaFiltroRelPedidos = class(TForm)
+  TfrmTelaFiltroRelProdutos = class(TForm)
     lblData: TLabel;
-    Label1: TLabel;
+    lblDataFinal: TLabel;
     edtDataInicio: TDateEdit;
     edtDataFinal: TDateEdit;
-    BitBtn1: TBitBtn;
+    btnOk: TBitBtn;
   private
     { Private declarations }
   public
@@ -21,7 +21,7 @@ type
   end;
 
 var
-  frmTelaFiltroRelPedidos: TfrmTelaFiltroRelPedidos;
+  frmTelaFiltroRelProdutos: TfrmTelaFiltroRelProdutos;
 
 implementation
 

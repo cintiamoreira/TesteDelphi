@@ -30,7 +30,7 @@ implementation
 
 procedure TfrmTelaFiltroRelPedidos.BitBtn1Click(Sender: TObject);
 begin
-  if (edtDataFim.Date) < (edtDataInicio.Date) then begin
+if (edtDataFim.Date) < (edtDataInicio.Date) then begin
     MessageDlg('Data Final não pode ser maior que a Data Início',mtInformation,[mbok],0);
     edtDataFim.SetFocus;
     abort;

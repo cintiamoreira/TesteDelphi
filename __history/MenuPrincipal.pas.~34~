@@ -23,16 +23,12 @@ type
     menuRelatorios: TMenuItem;
     menuRelatoriosProdutos: TMenuItem;
     menuRelatoriosPedidos: TMenuItem;
-    menuRelatorioProdutosData: TMenuItem;
-    menuRelatorioPedidosData: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure menuCadastrosProdutosClick(Sender: TObject);
     procedure menuCadastrosClientesClick(Sender: TObject);
     procedure menuCadastrosPedidosClick(Sender: TObject);
     procedure menuRelatoriosProdutosClick(Sender: TObject);
     procedure menuRelatoriosPedidosClick(Sender: TObject);
-    procedure menuRelatorioProdutosDataClick(Sender: TObject);
-    procedure menuRelatorioPedidosDataClick(Sender: TObject);
     procedure menuFuncionariosClick(Sender: TObject);
   private
     { Private declarations }
@@ -43,12 +39,7 @@ type
 var
   frmPrincipal: TfrmPrincipal;
   //frmRelProdutos: TfrmRelProdutos;
-  //frmRelProdutosPorData: TfrmRelProdutosPorData;
   frmRelPedidos: TfrmRelPedidos;
-  //frmTelaListagemFuncionarios: TfrmTelaListagemFuncionarios;
-  //frmTelaFiltroRelatorioProdutos: TfrmTelaFiltroRelatorioProdutos;
-  //frmTelaFiltroRelatorioPedidos: TfrmTelaFiltroRelatorioPedidos;
-  //frmuRelPedidos : TfrmRelPedidos;
 
 implementation
 
@@ -91,27 +82,26 @@ begin
     frmTelaListagemFuncionarios.Release;
 end;
 
-procedure TfrmPrincipal.menuRelatorioPedidosDataClick(Sender: TObject);
+procedure TfrmPrincipal.menuRelatoriosPedidosClick(Sender: TObject);
 begin
-   try
-
+  try
        frmTelaFiltroRelPedidos := TfrmTelaFiltroRelPedidos.Create(Self);
-           frmTelaFiltroRelPedidos.ShowModal;
+       frmTelaFiltroRelPedidos.ShowModal;
 
-               frmRelPedidos:=TfrmRelPedidos.Create(Self);
-                   frmRelPedidos.QryPedidos.Close;
-                       frmRelPedidos.QryPedidos.ParamByName('DataInicio').AsDate := frmTelaFiltroRelPedidos.edtDataInicio.Date;
-                           frmRelPedidos.QryPedidos.ParamByName('DataFim').AsDate := frmTelaFiltroRelPedidos.edtDataFinal.Date;
-                               frmRelPedidos.QryPedidos.Open;
-                                   frmRelPedidos.Relatorio.PreviewModal;
-                                     finally
-                                          frmTelaFiltroRelPedidos.Release;
-                                            end;
+       frmRelPedidos:=TfrmRelPedidos.Create(Self);
+       frmRelPedidos.QryPedidos.Close;
+       frmRelPedidos.QryPedidos.ParamByName('DataInicio').AsDate := frmTelaFiltroRelPedidos.edtDataInicio.Date;
+       frmRelPedidos.QryPedidos.ParamByName('DataFim').AsDate := frmTelaFiltroRelPedidos.edtDataFim.Date;
+       frmRelPedidos.QryPedidos.Open;
+       frmRelPedidos.Relatorio.PreviewModal;
+   finally
+    frmTelaFiltroRelPedidos.Release;
+   end;
 end;
 
-procedure TfrmPrincipal.menuRelatorioProdutosDataClick(Sender: TObject);
+procedure TfrmPrincipal.menuRelatoriosProdutosClick(Sender: TObject);
 begin
-  {try
+  try
 
       frmTelaFiltroRelatorioProdutos := TfrmTelaFiltroRelatorioProdutos.Create(Self);
           frmTelaFiltroRelatorioProdutos.ShowModal;
@@ -124,21 +114,7 @@ begin
                                   frmRelProdutosPorData.Relatorio.PreviewModal;
                                     finally
                                          frmTelaFiltroRelatorioProdutos.Release;
-                                           end;}
-end;
-
-procedure TfrmPrincipal.menuRelatoriosPedidosClick(Sender: TObject);
-begin
-  {frmuRelPedidos := TfrmRelPedidos.Create(Self);
-    frmuRelPedidos.Relatorio.PreviewModal;
-      frmuRelPedidos.Release;}
-end;
-
-procedure TfrmPrincipal.menuRelatoriosProdutosClick(Sender: TObject);
-begin
-  {frmRelProdutos := TfrmRelProdutos.Create(Self);
-    frmRelProdutos.Relatorio.PreviewModal;
-      frmRelProdutos.Release;}
+              end;
 end;
 
 
