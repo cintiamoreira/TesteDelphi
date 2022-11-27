@@ -9,9 +9,7 @@ uses
   TelaHerancaListagem in 'TelaHerancaListagem.pas' {frmTelaHerancaListagem},
   cClientes in 'classes\cClientes.pas',
   cPedidos in 'classes\cPedidos.pas',
-  cProdutos in 'classes\cProdutos.pas',
-  TelaListagemProdutos in 'telas\TelaListagemProdutos.pas' {frmTelaListagemProdutos},
-  TelaCadastroProdutos in 'telas\TelaCadastroProdutos.pas' {frmTelaCadastroProdutos};
+  cProdutos in 'classes\cProdutos.pas';
 
 {$R *.res}
 
@@ -19,7 +17,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmTelaListagemProdutos, frmTelaListagemProdutos);
-  Application.CreateForm(TfrmTelaCadastroProdutos, frmTelaCadastroProdutos);
   Application.Run;
 end.
