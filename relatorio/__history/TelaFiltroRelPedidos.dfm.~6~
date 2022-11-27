@@ -38,7 +38,7 @@ object frmTelaFiltroRelPedidos: TfrmTelaFiltroRelPedidos
     CalendarStyle = csDialog
     TabOrder = 0
   end
-  object edtDataFim: TDateEdit
+  object edtDataFinal: TDateEdit
     Left = 184
     Top = 38
     Width = 121

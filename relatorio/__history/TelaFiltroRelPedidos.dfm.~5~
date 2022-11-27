@@ -38,7 +38,7 @@ object frmTelaFiltroRelPedidos: TfrmTelaFiltroRelPedidos
     CalendarStyle = csDialog
     TabOrder = 0
   end
-  object edtDataFim: TDateEdit
+  object edtDataFinal: TDateEdit
     Left = 184
     Top = 38
     Width = 121
@@ -83,6 +83,5 @@ object frmTelaFiltroRelPedidos: TfrmTelaFiltroRelPedidos
       75C3C7C4FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBACEC089DBA268DB8959
       D97851D46F55CE7371C986AFC6B3FF00FFFF00FFFF00FFFF00FF}
     TabOrder = 2
-    OnClick = BitBtn1Click
   end
 end

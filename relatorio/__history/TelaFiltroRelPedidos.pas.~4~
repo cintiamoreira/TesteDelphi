@@ -12,9 +12,8 @@ type
     lblData: TLabel;
     Label1: TLabel;
     edtDataInicio: TDateEdit;
-    edtDataFim: TDateEdit;
+    edtDataFinal: TDateEdit;
     BitBtn1: TBitBtn;
-    procedure BitBtn1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -27,20 +26,5 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TfrmTelaFiltroRelPedidos.BitBtn1Click(Sender: TObject);
-begin
-if (edtDataFim.Date) < (edtDataInicio.Date) then begin
-    MessageDlg('Data Final não pode ser maior que a Data Início',mtInformation,[mbok],0);
-    edtDataFim.SetFocus;
-    abort;
-  end;
-  if (edtDataFim.Date=0) OR (edtDataInicio.Date=0) then begin
-    MessageDlg('Data Inicial ou Final são campos obrigatórios',MtInformation,[mbok],0);
-    EdtDataInicio.SetFocus;
-    abort;
-  end;
-  Close;
-end;
 
 end.

@@ -30,17 +30,15 @@ implementation
 
 procedure TfrmTelaFiltroRelPedidos.BitBtn1Click(Sender: TObject);
 begin
-if (edtDataFim.Date) < (edtDataInicio.Date) then begin
-    MessageDlg('Data Final não pode ser maior que a Data Início',mtInformation,[mbok],0);
-    edtDataFim.SetFocus;
-    abort;
-  end;
-  if (edtDataFim.Date=0) OR (edtDataInicio.Date=0) then begin
-    MessageDlg('Data Inicial ou Final são campos obrigatórios',MtInformation,[mbok],0);
-    EdtDataInicio.SetFocus;
-    abort;
-  end;
-  Close;
+if edtDataInicio.Date > edtDataFim.Date then begin
+
+  ShowMessage('Data final deve ser depois da data de inicio');
+  abort;
+end
+else if edtDataInicio.Date = 0 or edtDataFim.Date = 0 then
+  ShowMessage('Ambas as datas são obrigatórias')
+
+    Close;
 end;
 
 end.
