@@ -8,7 +8,7 @@ uses
    Vcl.Menus, uDTMConexao, TelaListagemProdutos, TelaListagemPedidos,
    TelaListagemClientes, TelaListagemFuncionarios, uRelProdutos, uRelPedidos,
    TelaFiltroRelPedidos, TelaFiltroRelProdutos, TelaConfiguracaoMenu,
-   Vcl.ExtCtrls, Registry, WinProcs, cArquivoIni;
+   Vcl.ExtCtrls, Registry, WinProcs, cArquivoIni, ZDbcIntfs;
 
 type
     TfrmPrincipal = class(TForm)
@@ -61,10 +61,11 @@ end;
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
   atualizarPlanoDeFundo;
+
   if not FileExists(TArquivoIni.ArquivoIni) then
   begin
     TArquivoIni.AtualizarIni('SERVER', 'TipoDataBase', 'MSSQL');
-    TArquivoIni.AtualizarIni('SERVER', 'HostName', '.\');
+    TArquivoIni.AtualizarIni('SERVER', 'HostName', '.\SQLEXPRESS');
     TArquivoIni.AtualizarIni('SERVER', 'Port', '1433');
     TArquivoIni.AtualizarIni('SERVER', 'User', 'sa');
     TArquivoIni.AtualizarIni('SERVER', 'Password', 'ciih');
@@ -77,27 +78,24 @@ begin
   end
   else
   begin
-
-
-
+    dtmPrincipal := TdtmPrincipal.Create(Self);     //Instancia o DataModule
     dtmPrincipal.ConexaoDB.SQLHourGlass := True;
     dtmPrincipal.ConexaoDB.Connected:=true;
 
-    dtmPrincipal := TdtmPrincipal.Create(Self);     //Instancia o DataModule
     with DtmPrincipal.ConexaoDB do
     begin
       Connected:=False;
       SQLHourGlass:=False;
       if TArquivoIni.LerIni('SERVER','TipoDataBase')='MSSQL' then
          Protocol:='mssql';  //Protocolo do banco de dados
-      LibraryLocation:='C:\Users\cinti\Desktop\Projetos Delphi\Delphi e sql server\ntwdblib.dll';
+      LibraryLocation:='C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\ntwdblib.dll';
       HostName:= TArquivoIni.LerIni('SERVER','HostName'); //Instancia do SQLServer
       Port    := StrToInt(TArquivoIni.LerIni('SERVER','Port'));  //Porta do SQL Server
       User    := TArquivoIni.LerIni('SERVER','User');  //Usuario do Banco de Dados
       Password:= TArquivoIni.LerIni('SERVER','Password');  //Senha do Usuário do banco
       Database:= TArquivoIni.LerIni('SERVER','DataBase');;  //Nome do Banco de Dados
       AutoCommit:= True;
-     // TransactIsolationLevel:=tiReadCommitted;
+      TransactIsolationLevel:=tiReadCommitted;
       Connected:=True;  //Faz a Conexão do Banco
     end;
 
@@ -177,6 +175,4 @@ begin
   end;
 end;
 
-
-end;
 end.

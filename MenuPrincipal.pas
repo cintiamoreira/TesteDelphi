@@ -53,14 +53,16 @@ implementation
 
 procedure TfrmPrincipal.atualizarPlanoDeFundo;
 begin
-  const Reg = TRegIniFile.Create('Control Panel\Desktop');
-  const imageFromRegistry = Reg.ReadString('','Wallpaper','');
-  imgBackground.Picture.LoadFromFile(imageFromRegistry);
+  const caminhoNaIni = TArquivoIni.LerIni('SERVER','caminhoImagemBackground');
+  if caminhoNaIni <> '' then
+    imgBackground.Picture.LoadFromFile(caminhoNaIni);
+  {const Reg = TRegIniFile.Create('Control Panel\Desktop');
+    const imageFromRegistry = Reg.ReadString('','Wallpaper','');
+      imgBackground.Picture.LoadFromFile(imageFromRegistry);}
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
-  atualizarPlanoDeFundo;
 
   if not FileExists(TArquivoIni.ArquivoIni) then
   begin
@@ -70,6 +72,12 @@ begin
     TArquivoIni.AtualizarIni('SERVER', 'User', 'sa');
     TArquivoIni.AtualizarIni('SERVER', 'Password', 'ciih');
     TArquivoIni.AtualizarIni('SERVER', 'Database', 'TesteDelphi');
+
+
+    TArquivoIni.AtualizarIni('SERVER', 'caminhoImagemBackground', '');
+
+    TArquivoIni.AtualizarIni('SERVER', 'emailEnvioRelatorios', '');
+    TArquivoIni.AtualizarIni('SERVER', 'nomeEnvioRelatorios', '');
 
     MessageDlg('Arquivo '+ TArquivoIni.ArquivoIni +' CRIADO com sucesso' +#13+
                'CONFIGURE o arquivo antes de inicializar a aplicação',MtInformation,[mbok],0);
@@ -100,6 +108,8 @@ begin
     end;
 
 end;
+
+  atualizarPlanoDeFundo;
 end;
 
 procedure TfrmPrincipal.menuCadastrosClientesClick(Sender: TObject);

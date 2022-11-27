@@ -30,7 +30,7 @@ type
 
   private
     { Private declarations }
-     procedure AlterarRegistryImagem(pImagemBMP: string; pTile: Boolean);
+     procedure AlterarImagemINI(caminhoImagem: string; pTile: Boolean);
 
   public
     { Public declarations }
@@ -43,14 +43,14 @@ var
 implementation
 
 {$R *.dfm}
-procedure TfrmTelaConfiguracaoMenu.AlterarRegistryImagem(pImagemBMP: string; pTile: Boolean);
+procedure TfrmTelaConfiguracaoMenu.AlterarImagemINI(caminhoImagem: string; pTile: Boolean);
 var Reg : TRegIniFile;
 begin
   Reg := TRegIniFile.Create('Control Panel\Desktop');
 
   with Reg do
   begin
-    WriteString('', 'Wallpaper', pImagemBMP);
+    WriteString('', 'Wallpaper', caminhoImagem);
     if (pTile) then
        WriteString('', 'TileWallpaper', '1')
     else
@@ -66,7 +66,7 @@ procedure TfrmTelaConfiguracaoMenu.btnBuscarImagemClick(Sender: TObject);
 begin
    if OpenDialog1.Execute then
    begin
-    AlterarRegistryImagem(OpenDialog1.FileName, False);
+    AlterarImagemINI(OpenDialog1.FileName, False);
    end;
 end;
 

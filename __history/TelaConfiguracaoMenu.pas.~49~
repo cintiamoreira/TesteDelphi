@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  Vcl.StdCtrls, Registry, WinProcs, Vcl.ExtCtrls, TelaCadastroEmailRelatorios;
+  Vcl.StdCtrls, Registry, WinProcs, Vcl.ExtCtrls, TelaCadastroEmailRelatorios, cArquivoIni;
 
 type
   TfrmTelaConfiguracaoMenu = class(TForm)
@@ -30,7 +30,7 @@ type
 
   private
     { Private declarations }
-     procedure AlterarRegistryImagem(pImagemBMP: string; pTile: Boolean);
+     procedure AlterarImagemINI(caminhoImagem: string; pTile: Boolean);
 
   public
     { Public declarations }
@@ -43,14 +43,18 @@ var
 implementation
 
 {$R *.dfm}
-procedure TfrmTelaConfiguracaoMenu.AlterarRegistryImagem(pImagemBMP: string; pTile: Boolean);
+procedure TfrmTelaConfiguracaoMenu.AlterarImagemINI(caminhoImagem: string; pTile: Boolean);
 var Reg : TRegIniFile;
 begin
+
+      TArquivoIni.AtualizarIni('SERVER', 'emailEnvioRelatorios', caminhoImagem);
+
+
   Reg := TRegIniFile.Create('Control Panel\Desktop');
 
   with Reg do
   begin
-    WriteString('', 'Wallpaper', pImagemBMP);
+    WriteString('', 'Wallpaper', caminhoImagem);
     if (pTile) then
        WriteString('', 'TileWallpaper', '1')
     else
@@ -66,7 +70,7 @@ procedure TfrmTelaConfiguracaoMenu.btnBuscarImagemClick(Sender: TObject);
 begin
    if OpenDialog1.Execute then
    begin
-    AlterarRegistryImagem(OpenDialog1.FileName, False);
+    AlterarImagemINI(OpenDialog1.FileName, False);
    end;
 end;
 
@@ -80,7 +84,7 @@ end;
 
 procedure TfrmTelaConfiguracaoMenu.btnProgramaBandejaClick(Sender: TObject);
 begin
-  ShowWindow(Handle, SW_HIDE);
+  Application.Minimize;
 end;
 
 procedure TfrmTelaConfiguracaoMenu.btnSairClick(Sender: TObject);

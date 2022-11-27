@@ -38,7 +38,7 @@ begin
     else begin
       ShowMessage('CADASTRADO com sucesso');
       TArquivoIni.AtualizarIni('SERVER', 'emailEnvioRelatorios', edtEmail.Text);
-      TArquivoIni.AtualizarIni('SERVER', 'nomeEnvioRelatorios', edtNomeCompleto.Text);
+      TArquivoIni.AtualizarIni('SERVER', 'nomeEnvioRelatorios', edtEmail.Text);
       Close;
     end;
 end;
