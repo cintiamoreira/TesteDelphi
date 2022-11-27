@@ -5,12 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
    System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-   Vcl.Menus, uDTMConexao,
-   TelaListagemProdutos, TelaListagemPedidos, TelaListagemClientes,
-   TelaListagemFuncionarios, uRelProdutos, uRelPedidos,
-   TelaFiltroRelPedidos, TelaFiltroRelProdutos,
-   TelaConfiguracaoMenu, Vcl.ExtCtrls,
-   Registry, WinProcs;
+   Vcl.Menus, uDTMConexao, TelaListagemProdutos, TelaListagemPedidos,
+   TelaListagemClientes, TelaListagemFuncionarios, uRelProdutos, uRelPedidos,
+   TelaFiltroRelPedidos, TelaFiltroRelProdutos, TelaConfiguracaoMenu,
+   Vcl.ExtCtrls, Registry, WinProcs, cArquivoIni, ZDbcIntfs;
 
 type
     TfrmPrincipal = class(TForm)
@@ -34,6 +32,7 @@ type
     procedure menuRelatoriosPedidosClick(Sender: TObject);
     procedure menuFuncionariosClick(Sender: TObject);
     procedure menuConfiguracaoClick(Sender: TObject);
+
   private
 
   procedure atualizarPlanoDeFundo();
@@ -61,13 +60,46 @@ end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
-
   atualizarPlanoDeFundo;
 
-  dtmPrincipal := TdtmPrincipal.Create(Self);
-  dtmPrincipal.ConexaoDB.SQLHourGlass := True;
-  dtmPrincipal.ConexaoDB.Connected:=true;
+  if not FileExists(TArquivoIni.ArquivoIni) then
+  begin
+    TArquivoIni.AtualizarIni('SERVER', 'TipoDataBase', 'MSSQL');
+    TArquivoIni.AtualizarIni('SERVER', 'HostName', '.\SQLEXPRESS');
+    TArquivoIni.AtualizarIni('SERVER', 'Port', '1433');
+    TArquivoIni.AtualizarIni('SERVER', 'User', 'sa');
+    TArquivoIni.AtualizarIni('SERVER', 'Password', 'ciih');
+    TArquivoIni.AtualizarIni('SERVER', 'Database', 'TesteDelphi');
 
+    MessageDlg('Arquivo '+ TArquivoIni.ArquivoIni +' CRIADO com sucesso' +#13+
+               'CONFIGURE o arquivo antes de inicializar a aplicação',MtInformation,[mbok],0);
+    Application.Terminate;
+
+  end
+  else
+  begin
+    dtmPrincipal := TdtmPrincipal.Create(Self);     //Instancia o DataModule
+    dtmPrincipal.ConexaoDB.SQLHourGlass := True;
+    dtmPrincipal.ConexaoDB.Connected:=true;
+
+    with DtmPrincipal.ConexaoDB do
+    begin
+      Connected:=False;
+      SQLHourGlass:=False;
+      if TArquivoIni.LerIni('SERVER','TipoDataBase')='MSSQL' then
+         Protocol:='mssql';  //Protocolo do banco de dados
+      LibraryLocation:='C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\ntwdblib.dll';
+      HostName:= TArquivoIni.LerIni('SERVER','HostName'); //Instancia do SQLServer
+      Port    := StrToInt(TArquivoIni.LerIni('SERVER','Port'));  //Porta do SQL Server
+      User    := TArquivoIni.LerIni('SERVER','User');  //Usuario do Banco de Dados
+      Password:= TArquivoIni.LerIni('SERVER','Password');  //Senha do Usuário do banco
+      Database:= TArquivoIni.LerIni('SERVER','DataBase');;  //Nome do Banco de Dados
+      AutoCommit:= True;
+      TransactIsolationLevel:=tiReadCommitted;
+      Connected:=True;  //Faz a Conexão do Banco
+    end;
+
+end;
 end;
 
 procedure TfrmPrincipal.menuCadastrosClientesClick(Sender: TObject);
@@ -142,6 +174,5 @@ begin
     frmTelaFiltroRelProdutos.Release;
   end;
 end;
-
 
 end.

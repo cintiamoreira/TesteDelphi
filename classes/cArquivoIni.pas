@@ -43,7 +43,6 @@ begin
   end;
 end;
 
-
 class procedure TArquivoIni.AtualizarIni(aSecao:String; aEntrada:String; aValor:String);
 var  Ini: TIniFile;
 begin

@@ -11,7 +11,8 @@ inherited frmTelaCadastroEmailRelatorios: TfrmTelaCadastroEmailRelatorios
     Height = 158
     ExplicitLeft = 0
     ExplicitTop = 0
-    ExplicitHeight = 472
+    ExplicitWidth = 471
+    ExplicitHeight = 158
     object lblNomeCompleto: TLabel
       Left = 50
       Top = 40
@@ -44,6 +45,8 @@ inherited frmTelaCadastroEmailRelatorios: TfrmTelaCadastroEmailRelatorios
   inherited Panel2: TPanel
     Top = 158
     Width = 471
+    ExplicitTop = 158
+    ExplicitWidth = 471
     inherited btnOK: TBitBtn
       Left = 131
       Anchors = [akRight, akBottom]

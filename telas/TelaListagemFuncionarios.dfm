@@ -42,6 +42,7 @@ inherited frmTelaListagemFuncionarios: TfrmTelaListagemFuncionarios
   end
   inherited Panel1: TPanel
     Width = 841
+    ExplicitWidth = 841
     inherited btnCadastrar: TBitBtn
       OnClick = btnCadastrarClick
     end
@@ -57,6 +58,7 @@ inherited frmTelaListagemFuncionarios: TfrmTelaListagemFuncionarios
   end
   inherited qryListagem: TZQuery
     Connection = dtmPrincipal.ConexaoDB
+    Active = True
     SQL.Strings = (
       'select * from funcionarios')
     object qryListagemid: TIntegerField

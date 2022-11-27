@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, TelaHerancaCadastro, Vcl.StdCtrls,
-  Vcl.Buttons, Vcl.ExtCtrls;
+  Vcl.Buttons, Vcl.ExtCtrls, System.StrUtils;
 
 type
   TfrmTelaCadastroEmailRelatorios = class(TfrmTelaHerancaCadastro)
@@ -31,11 +31,14 @@ implementation
 procedure TfrmTelaCadastroEmailRelatorios.btnOKClick(Sender: TObject);
 begin
   inherited;
-    if (edtNomeCompleto.Text='') OR (edtEmail.Text='') then begin
-         ShowMessage('Nome Completo ou Email são campos Obrigatórios');
-         Close;
-    end  else
-       ShowMessage('CADASTRADO com sucesso');
+    if (edtNomeCompleto.Text='') OR (edtEmail.Text='') then
+      ShowMessage('Nome Completo ou Email são campos Obrigatórios')
+    else  if not ContainsText(edtEmail.Text, '@') then
+      ShowMessage('Email invalido')
+    else begin
+      ShowMessage('CADASTRADO com sucesso');
+      Close;
+    end;
 end;
 
 procedure TfrmTelaCadastroEmailRelatorios.btnSairClick(Sender: TObject);
