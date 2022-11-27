@@ -18,7 +18,11 @@ uses
   TelaListagemClientes in 'telas\TelaListagemClientes.pas' {frmTelaListagemClientes},
   cFuncionarios in 'classes\cFuncionarios.pas',
   TelaListagemFuncionarios in 'telas\TelaListagemFuncionarios.pas' {frmTelaListagemFuncionarios},
-  TelaCadastroFuncionarios in 'telas\TelaCadastroFuncionarios.pas' {frmTelaCadastroFuncionarios};
+  TelaCadastroFuncionarios in 'telas\TelaCadastroFuncionarios.pas' {frmTelaCadastroFuncionarios},
+  uRelProdutos in 'relatorio\uRelProdutos.pas' {frmRelProdutos},
+  uRelPedidos in 'relatorio\uRelPedidos.pas' {frmRelPedidos},
+  TelaFiltroRelPedidos in 'relatorio\TelaFiltroRelPedidos.pas' {frmTelaFiltroRelPedidos},
+  TelaFiltroRelProdutos in 'relatorio\TelaFiltroRelProdutos.pas' {frmTelaFiltroRelProdutos};
 
 {$R *.res}
 
@@ -26,6 +30,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmTelaCadastroFuncionarios, frmTelaCadastroFuncionarios);
   Application.Run;
 end.

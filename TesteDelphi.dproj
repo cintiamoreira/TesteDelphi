@@ -154,6 +154,22 @@
             <Form>frmTelaCadastroFuncionarios</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="relatorio\uRelProdutos.pas">
+            <Form>frmRelProdutos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="relatorio\uRelPedidos.pas">
+            <Form>frmRelPedidos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="relatorio\TelaFiltroRelPedidos.pas">
+            <Form>frmTelaFiltroRelPedidos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="relatorio\TelaFiltroRelProdutos.pas">
+            <Form>frmTelaFiltroRelProdutos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
