@@ -27,6 +27,7 @@ type
     procedure btnDeletarClick(Sender: TObject);
   private
     { Private declarations }
+    procedure AbrirTelaCadastro(estadoInicial: TEstadoCadastro; clienteInicial: TClientes);
   public
     { Public declarations }
   end;
@@ -39,14 +40,21 @@ implementation
 {$R *.dfm}
 
 
+procedure TfrmTelaListagemClientes.AbrirTelaCadastro(
+  estadoInicial: TEstadoCadastro; clienteInicial: TClientes);
+begin
+  frmTelaCadastroClientes := TfrmTelaCadastroClientes.Create(Self, estadoInicial, clienteInicial);
+  frmTelaCadastroClientes.ShowModal;
+  qryListagem.Refresh;
+  frmTelaCadastroClientes.Release;
+end;
+
 procedure TfrmTelaListagemClientes.btnCadastrarClick(Sender: TObject);
 begin
   inherited;
 
   var clienteInicial := TClientes.Create(dtmPrincipal.ConexaoDB, qryListagem);
-  frmTelaCadastroClientes := TfrmTelaCadastroClientes.Create(Self, ecCadastrar, clienteInicial);
-  frmTelaCadastroClientes.ShowModal;
-  frmTelaCadastroClientes.Release;
+  AbrirTelaCadastro(ecCadastrar, clienteInicial)
 end;
 
 procedure TfrmTelaListagemClientes.btnDeletarClick(Sender: TObject);
@@ -68,9 +76,7 @@ begin
   inherited;
   var clienteInicial := TClientes.Create(dtmPrincipal.ConexaoDB, qryListagem);
   clienteInicial.Selecionar(QryListagem.FieldByName('id').AsInteger);
-  frmTelaCadastroClientes := TfrmTelaCadastroClientes.Create(Self, ecEditar, clienteInicial);
-  frmTelaCadastroClientes.ShowModal;
-  frmTelaCadastroClientes.Release;
+  AbrirTelaCadastro(ecEditar,clienteInicial);
 end;
 
 procedure TfrmTelaListagemClientes.btnFecharClick(Sender: TObject);
@@ -85,9 +91,7 @@ begin
 
   var clienteInicial := TClientes.Create(dtmPrincipal.ConexaoDB, qryListagem);
   clienteInicial.Selecionar(QryListagem.FieldByName('id').AsInteger);
-  frmTelaCadastroClientes := TfrmTelaCadastroClientes.Create(Self, ecVisualizar, clienteInicial);
-  frmTelaCadastroClientes.ShowModal;
-  frmTelaCadastroClientes.Release;
+  AbrirTelaCadastro(ecVisualizar, clienteInicial);
 end;
 
 end.

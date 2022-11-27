@@ -46,6 +46,7 @@ procedure TfrmTelaListagemPedidos.AbrirTelaCadastro(
 begin
   frmTelaCadastroPedidos := TfrmTelaCadastroPedidos.Create(Self,estadoInicial,pedidoInicial, qryListagem);
   frmTelaCadastroPedidos.ShowModal;
+  qryListagem.Refresh;
   frmTelaCadastroPedidos.Release;
 end;
 
