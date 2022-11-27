@@ -56,14 +56,14 @@ inherited frmTelaCadastroPedidos: TfrmTelaCadastroPedidos
       Enabled = False
     end
     object lblClienteSelecionado: TLabel
-      Left = 330
+      Left = 298
       Top = 6
       Width = 61
       Height = 13
       Caption = 'Selecionado:'
     end
     object lblProdutoSelecionado: TLabel
-      Left = 1009
+      Left = 942
       Top = 6
       Width = 61
       Height = 13
@@ -283,39 +283,49 @@ inherited frmTelaCadastroPedidos: TfrmTelaCadastroPedidos
     Left = 136
     Top = 40
     object queryClientesid: TIntegerField
+      DisplayLabel = 'ID'
       FieldName = 'id'
       ReadOnly = True
     end
     object queryClientesnome: TWideStringField
+      DisplayLabel = 'NOME'
       FieldName = 'nome'
     end
     object queryClientessobrenome: TWideStringField
+      DisplayLabel = 'SOBRENOME'
       FieldName = 'sobrenome'
     end
     object queryClientescpf: TWideStringField
+      DisplayLabel = 'CPF'
       FieldName = 'cpf'
       Size = 11
     end
     object queryClientesendereco: TWideStringField
+      DisplayLabel = 'ENDERE'#199'O'
       FieldName = 'endereco'
       Size = 50
     end
     object queryClientescep: TWideStringField
+      DisplayLabel = 'CEP'
       FieldName = 'cep'
       Size = 8
     end
     object queryClientestelefone: TWideStringField
+      DisplayLabel = 'TELEFONE'
       FieldName = 'telefone'
       Size = 11
     end
     object queryClientescelular: TWideStringField
+      DisplayLabel = 'CELULAR'
       FieldName = 'celular'
       Size = 11
     end
     object queryClientesdata_inclusao: TDateTimeField
+      DisplayLabel = 'DATA DE INCLUS'#195'O'
       FieldName = 'data_inclusao'
     end
     object queryClientesdata_edicao: TDateTimeField
+      DisplayLabel = 'DATA DE EDI'#199#195'O'
       FieldName = 'data_edicao'
     end
   end
@@ -338,25 +348,32 @@ inherited frmTelaCadastroPedidos: TfrmTelaCadastroPedidos
     Left = 472
     Top = 48
     object queryProdutosid: TIntegerField
+      DisplayLabel = 'ID'
       FieldName = 'id'
       ReadOnly = True
     end
     object queryProdutosnome: TWideStringField
+      DisplayLabel = 'NOME'
       FieldName = 'nome'
     end
     object queryProdutosvalor: TFloatField
+      DisplayLabel = 'VALOR'
       FieldName = 'valor'
     end
     object queryProdutosquantidade: TIntegerField
+      DisplayLabel = 'QUANTIDADE'
       FieldName = 'quantidade'
     end
     object queryProdutosdesconto_promocional: TIntegerField
+      DisplayLabel = 'DESCONTO PROMOCIONAL'
       FieldName = 'desconto_promocional'
     end
     object queryProdutosdata_inclusao: TDateTimeField
+      DisplayLabel = 'DATA DE INCLUS'#195'O'
       FieldName = 'data_inclusao'
     end
     object queryProdutosdata_edicao: TDateTimeField
+      DisplayLabel = 'DATA DE EDI'#199#195'O'
       FieldName = 'data_edicao'
     end
   end

@@ -1,0 +1,47 @@
+unit cAlterarPlanoFundo;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Registry, WinProcs, StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    Button1: TButton;
+    OpenDialog1: TOpenDialog;
+  private
+    { Private declarations }
+
+    procedure Alterar(pImagemBMP: string; pTile: Boolean);  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+{ TForm1 }
+
+procedure TForm1.Alterar(pImagemBMP: string; pTile: Boolean);
+var
+  Reg : TRegIniFile;
+begin
+  reg := TRegIniFile.Create('Control Panel\Desktop');
+
+  with Reg do
+  begin
+    WriteString('', 'Wallpaper', pImagemBMP);
+    if (pTile) then
+       WriteString('', 'TileWallpaper', '1')
+    else
+       WriteString('', 'TileWallpaper', '0')
+  end;
+  Reg.Free;
+  SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, nil, SPIF_SENDWININICHANGE);
+end;
+
+end.

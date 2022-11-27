@@ -8,7 +8,9 @@ uses
    Vcl.Menus, uDTMConexao,
    TelaListagemProdutos, TelaListagemPedidos, TelaListagemClientes,
    TelaListagemFuncionarios, uRelProdutos, uRelPedidos,
-   TelaFiltroRelPedidos, TelaFiltroRelProdutos;
+   TelaFiltroRelPedidos, TelaFiltroRelProdutos,
+   TelaConfiguracaoMenu, Vcl.ExtCtrls,
+   Registry, WinProcs;
 
 type
   TfrmPrincipal = class(TForm)
@@ -23,6 +25,7 @@ type
     menuRelatorios: TMenuItem;
     menuRelatoriosProdutos: TMenuItem;
     menuRelatoriosPedidos: TMenuItem;
+    imgBackground: TImage;
     procedure FormCreate(Sender: TObject);
     procedure menuCadastrosProdutosClick(Sender: TObject);
     procedure menuCadastrosClientesClick(Sender: TObject);
@@ -30,7 +33,10 @@ type
     procedure menuRelatoriosProdutosClick(Sender: TObject);
     procedure menuRelatoriosPedidosClick(Sender: TObject);
     procedure menuFuncionariosClick(Sender: TObject);
+    procedure menuConfiguracaoClick(Sender: TObject);
   private
+
+  procedure atualizarPlanoDeFundo();
     { Private declarations }
   public
     { Public declarations }
@@ -46,8 +52,18 @@ implementation
 
 {$R *.dfm}
 
+procedure TfrmPrincipal.atualizarPlanoDeFundo;
+begin
+  const Reg = TRegIniFile.Create('Control Panel\Desktop');
+  const imageFromRegistry = Reg.ReadString('','Wallpaper','');
+  imgBackground.Picture.LoadFromFile(imageFromRegistry);
+end;
+
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
+
+  atualizarPlanoDeFundo;
+
   dtmPrincipal := TdtmPrincipal.Create(Self);
   dtmPrincipal.ConexaoDB.SQLHourGlass := True;
   dtmPrincipal.ConexaoDB.Connected:=true;
@@ -73,6 +89,16 @@ begin
   frmTelaListagemProdutos := TfrmTelaListagemProdutos.Create(Self);
   frmTelaListagemProdutos.ShowModal;
   frmTelaListagemProdutos.Release;
+end;
+
+procedure TfrmPrincipal.menuConfiguracaoClick(Sender: TObject);
+begin
+  frmTelaConfiguracaoMenu := TfrmTelaConfiguracaoMenu.Create(Self);
+  frmTelaConfiguracaoMenu.ShowModal;
+
+  atualizarPlanoDeFundo;
+
+  frmTelaConfiguracaoMenu.Release;
 end;
 
 procedure TfrmPrincipal.menuFuncionariosClick(Sender: TObject);

@@ -16,13 +16,26 @@ object frmPrincipal: TfrmPrincipal
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 19
+  object imgBackground: TImage
+    Left = 0
+    Top = 0
+    Width = 794
+    Height = 535
+    Align = alClient
+    AutoSize = True
+    Center = True
+    Stretch = True
+    ExplicitWidth = 793
+    ExplicitHeight = 537
+  end
   object mainPrincipal: TMainMenu
     Left = 720
     Top = 48
     object menuMenu: TMenuItem
       Caption = 'MENU'
       object menuConfiguracao: TMenuItem
-        Caption = 'Configura'#231#227'o'
+        Caption = 'Configura'#231#245'es'
+        OnClick = menuConfiguracaoClick
       end
     end
     object menuCadastros: TMenuItem

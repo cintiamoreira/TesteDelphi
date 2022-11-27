@@ -22,7 +22,10 @@ uses
   uRelProdutos in 'relatorio\uRelProdutos.pas' {frmRelProdutos},
   uRelPedidos in 'relatorio\uRelPedidos.pas' {frmRelPedidos},
   TelaFiltroRelPedidos in 'relatorio\TelaFiltroRelPedidos.pas' {frmTelaFiltroRelPedidos},
-  TelaFiltroRelProdutos in 'relatorio\TelaFiltroRelProdutos.pas' {frmTelaFiltroRelProdutos};
+  TelaFiltroRelProdutos in 'relatorio\TelaFiltroRelProdutos.pas' {frmTelaFiltroRelProdutos},
+  TelaConfiguracaoMenu in 'TelaConfiguracaoMenu.pas' {frmTelaConfiguracaoMenu};
+
+{alterarPlanoFundo}
 
 {$R *.res}
 

@@ -1,0 +1,117 @@
+object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
+  Left = 0
+  Top = 0
+  Caption = 'Configura'#231#245'es'
+  ClientHeight = 444
+  ClientWidth = 414
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  DesignSize = (
+    414
+    444)
+  PixelsPerInch = 96
+  TextHeight = 13
+  object lblMudarPlanoFundo: TLabel
+    Left = 32
+    Top = 53
+    Width = 194
+    Height = 19
+    Caption = 'MUDAR PLANO DE FUNDO'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 10053171
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 34
+    Top = 136
+    Width = 154
+    Height = 19
+    Caption = 'APLICAR DESCONTO'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 10053171
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 34
+    Top = 218
+    Width = 248
+    Height = 19
+    Caption = 'DEIXAR PROGRAMA NA BANDEJA'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 10053171
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 32
+    Top = 304
+    Width = 363
+    Height = 19
+    Caption = 'CADASTRAR EMAIL PARA RECEBER RELAT'#211'RIOS'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 10053171
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Button1: TButton
+    Left = 34
+    Top = 83
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 0
+  end
+  object Button2: TButton
+    Left = 34
+    Top = 166
+    Width = 75
+    Height = 25
+    Caption = 'Button2'
+    TabOrder = 1
+  end
+  object Button3: TButton
+    Left = 32
+    Top = 248
+    Width = 75
+    Height = 25
+    Caption = 'Button3'
+    TabOrder = 2
+  end
+  object Button4: TButton
+    Left = 34
+    Top = 334
+    Width = 75
+    Height = 25
+    Caption = 'Button4'
+    TabOrder = 3
+  end
+  object btnSair: TButton
+    Left = 305
+    Top = 400
+    Width = 75
+    Height = 25
+    Anchors = [akRight, akBottom]
+    Caption = 'SAIR'
+    TabOrder = 4
+    ExplicitLeft = 317
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 128
+    Top = 80
+  end
+end

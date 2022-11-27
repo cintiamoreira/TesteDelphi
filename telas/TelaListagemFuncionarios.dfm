@@ -1,8 +1,11 @@
 inherited frmTelaListagemFuncionarios: TfrmTelaListagemFuncionarios
   Caption = 'frmTelaListagemFuncionarios'
+  ClientWidth = 841
+  ExplicitWidth = 857
   PixelsPerInch = 96
   TextHeight = 13
   inherited grdListagem: TDBGrid
+    Width = 841
     OnDblClick = grdListagemDblClick
     Columns = <
       item
@@ -38,6 +41,7 @@ inherited frmTelaListagemFuncionarios: TfrmTelaListagemFuncionarios
       end>
   end
   inherited Panel1: TPanel
+    Width = 841
     inherited btnCadastrar: TBitBtn
       OnClick = btnCadastrarClick
     end
@@ -53,29 +57,34 @@ inherited frmTelaListagemFuncionarios: TfrmTelaListagemFuncionarios
   end
   inherited qryListagem: TZQuery
     Connection = dtmPrincipal.ConexaoDB
-    Active = True
     SQL.Strings = (
       'select * from funcionarios')
     object qryListagemid: TIntegerField
+      DisplayLabel = 'ID'
       FieldName = 'id'
       ReadOnly = True
     end
     object qryListagemnome_completo: TWideStringField
+      DisplayLabel = 'Nome Completo'
       FieldName = 'nome_completo'
       Size = 50
     end
     object qryListagemcpf: TWideStringField
+      DisplayLabel = 'CPF'
       FieldName = 'cpf'
       Size = 11
     end
     object qryListagemsenha: TWideStringField
+      DisplayLabel = 'Senha'
       FieldName = 'senha'
       Size = 200
     end
     object qryListagemdata_inclusao: TDateTimeField
+      DisplayLabel = 'Data de Inclus'#227'o'
       FieldName = 'data_inclusao'
     end
     object qryListagemdata_edicao: TDateTimeField
+      DisplayLabel = 'Data de Edi'#231#227'o'
       FieldName = 'data_edicao'
     end
   end
