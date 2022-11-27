@@ -121,6 +121,14 @@
         <DCCReference Include="classes\cClientes.pas"/>
         <DCCReference Include="classes\cPedidos.pas"/>
         <DCCReference Include="classes\cProdutos.pas"/>
+        <DCCReference Include="telas\TelaCadastroProdutos.pas">
+            <Form>frmTelaCadastroProdutos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="telas\TelaListagemProdutos.pas">
+            <Form>frmTelaListagemProdutos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
