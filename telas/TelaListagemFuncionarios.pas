@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, TelaHerancaListagem, Data.DB,
   ZAbstractRODataset, ZAbstractDataset, ZDataset, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, uDTMConexao;
+  Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, uDTMConexao, cFuncionarios, cadastroEnum,
+  TelaCadastroFuncionarios;
 
 type
   TfrmTelaListagemFuncionarios = class(TfrmTelaHerancaListagem)
@@ -14,9 +15,16 @@ type
     qryListagemnome_completo: TWideStringField;
     qryListagemcpf: TWideStringField;
     qryListagemsenha: TWideStringField;
-    qryListagemdata_inclusao: TWideStringField;
-    qryListagemdata_edicao: TWideStringField;
+    qryListagemdata_inclusao: TDateTimeField;
+    qryListagemdata_edicao: TDateTimeField;
+
+    procedure btnFecharClick(Sender: TObject);
+    procedure btnCadastrarClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
+    procedure btnDeletarClick(Sender: TObject);
+    procedure grdListagemDblClick(Sender: TObject);
   private
+    procedure AbrirTelaCadastro(estadoInicial: TEstadoCadastro; funcionarioInicial: TFuncionarios);
     { Private declarations }
   public
     { Public declarations }
@@ -28,5 +36,56 @@ var
 implementation
 
 {$R *.dfm}
+procedure TfrmTelaListagemFuncionarios.btnCadastrarClick(Sender: TObject);
+begin
+  inherited;
+  const produtoInicial = TFuncionarios.Create(dtmPrincipal.ConexaoDB, qryListagem);
+  AbrirTelaCadastro(ecCadastrar, produtoInicial);
+end;
 
+procedure TfrmTelaListagemFuncionarios.btnDeletarClick(Sender: TObject);
+begin
+  inherited;
+  const funcionarioASerDeletado = TFuncionarios.Create(dtmPrincipal.ConexaoDB, qryListagem);
+  funcionarioASerDeletado.Selecionar(QryListagem.FieldByName('id').AsInteger);
+  const apagarSucesso = funcionarioASerDeletado.Apagar();
+  if apagarSucesso then
+    ShowMessage('APAGADO com sucesso')
+  else
+    ShowMessage('Ocorreu um ERRO');
+
+  qryListagem.Refresh;
+end;
+
+procedure TfrmTelaListagemFuncionarios.btnEditarClick(Sender: TObject);
+begin
+  inherited;
+  const funcionarioInicial = TFuncionarios.Create(dtmPrincipal.ConexaoDB, qryListagem);
+  funcionarioInicial.Selecionar(QryListagem.FieldByName('id').AsInteger);
+  AbrirTelaCadastro(ecEditar, funcionarioInicial)
+end;
+
+procedure TfrmTelaListagemFuncionarios.btnFecharClick(Sender: TObject);
+begin
+  inherited;
+  Close;
+end;
+
+procedure TfrmTelaListagemFuncionarios.grdListagemDblClick(Sender: TObject);
+begin
+  inherited;
+   inherited;
+
+  const funcionarioInicial = TFuncionarios.Create(dtmPrincipal.ConexaoDB, qryListagem);
+  funcionarioInicial.Selecionar(QryListagem.FieldByName('id').AsInteger);
+  AbrirTelaCadastro(ecVisualizar,funcionarioInicial);
+end;
+
+procedure TfrmTelaListagemFuncionarios.AbrirTelaCadastro(estadoInicial: TEstadoCadastro; funcionarioInicial: TFuncionarios);
+begin
+  inherited;
+  frmTelaCadastroFuncionarios := TfrmTelaCadastroFuncionarios.Create(Self, estadoInicial, funcionarioInicial);
+  frmTelaCadastroFuncionarios.ShowModal;
+  frmTelaCadastroFuncionarios.Release;
+end;
 end.

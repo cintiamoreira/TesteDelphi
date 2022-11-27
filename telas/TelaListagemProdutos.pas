@@ -17,8 +17,8 @@ type
     qryListagemdesconto_promocional: TIntegerField;
     qryListagemdata_inclusao: TDateTimeField;
     qryListagemdata_edicao: TDateTimeField;
-    procedure btnFecharClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
     procedure grdListagemDblClick(Sender: TObject);
     procedure btnCadastrarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);

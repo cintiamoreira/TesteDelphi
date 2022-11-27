@@ -3,6 +3,7 @@ inherited frmTelaListagemFuncionarios: TfrmTelaListagemFuncionarios
   PixelsPerInch = 96
   TextHeight = 13
   inherited grdListagem: TDBGrid
+    OnDblClick = grdListagemDblClick
     Columns = <
       item
         Expanded = False
@@ -22,6 +23,7 @@ inherited frmTelaListagemFuncionarios: TfrmTelaListagemFuncionarios
       item
         Expanded = False
         FieldName = 'senha'
+        Width = 161
         Visible = True
       end
       item
@@ -34,6 +36,20 @@ inherited frmTelaListagemFuncionarios: TfrmTelaListagemFuncionarios
         FieldName = 'data_edicao'
         Visible = True
       end>
+  end
+  inherited Panel1: TPanel
+    inherited btnCadastrar: TBitBtn
+      OnClick = btnCadastrarClick
+    end
+    inherited btnEditar: TBitBtn
+      OnClick = btnEditarClick
+    end
+    inherited btnDeletar: TBitBtn
+      OnClick = btnDeletarClick
+    end
+    inherited btnFechar: TBitBtn
+      OnClick = btnFecharClick
+    end
   end
   inherited qryListagem: TZQuery
     Connection = dtmPrincipal.ConexaoDB
@@ -56,10 +72,10 @@ inherited frmTelaListagemFuncionarios: TfrmTelaListagemFuncionarios
       FieldName = 'senha'
       Size = 200
     end
-    object qryListagemdata_inclusao: TWideStringField
+    object qryListagemdata_inclusao: TDateTimeField
       FieldName = 'data_inclusao'
     end
-    object qryListagemdata_edicao: TWideStringField
+    object qryListagemdata_edicao: TDateTimeField
       FieldName = 'data_edicao'
     end
   end

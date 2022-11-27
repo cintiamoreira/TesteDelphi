@@ -61,7 +61,7 @@ type
   published
 
     property id : Integer     read getId     write setId;
-    property nome : string   read getNomeCompleto  write setNomeCompleto;
+    property nomeCompleto : string   read getNomeCompleto  write setNomeCompleto;
     property cpf : string   read getCPF  write setCPF;
     property senha : string   read getSenha  write setSenha;
     property dataInclusao : string   read getDataInclusao  write setDataInclusao;
@@ -89,7 +89,7 @@ function TFuncionarios.Apagar : Boolean;
 var Qry:TZQuery;
 begin
   if MessageDlg('Apagar o Registro: '+#13+#13+
-                'C�digo: '+IntToStr (F_id) +#13+
+                'Código: '+IntToStr (F_id) +#13+
                 'Nome: '+F_nome_completo,mtConfirmation, [mbYes, mbNo],0)=mrNo
   then begin
       Result := false;
