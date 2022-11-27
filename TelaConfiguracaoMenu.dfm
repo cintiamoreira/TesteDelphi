@@ -2,8 +2,8 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
   Left = 0
   Top = 0
   Caption = 'Configura'#231#245'es'
-  ClientHeight = 407
-  ClientWidth = 447
+  ClientHeight = 482
+  ClientWidth = 461
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,13 +13,13 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
   OldCreateOrder = False
   OnCreate = FormCreate
   DesignSize = (
-    447
-    407)
+    461
+    482)
   PixelsPerInch = 96
   TextHeight = 13
   object imgBackground: TImage
-    Left = 10
-    Top = 183
+    Left = 18
+    Top = 255
     Width = 427
     Height = 162
     Center = True
@@ -53,15 +53,15 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
   end
   object btnAplicarDesconto: TButton
     Tag = 1
-    Left = 346
+    Left = 354
     Top = 60
     Width = 75
     Height = 25
     Caption = 'OK'
-    TabOrder = 0
+    TabOrder = 1
   end
   object btnCadastrarEmail: TButton
-    Left = 346
+    Left = 354
     Top = 146
     Width = 75
     Height = 25
@@ -70,18 +70,18 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     OnClick = btnCadastrarEmailClick
   end
   object btnSair: TButton
-    Left = 346
-    Top = 363
+    Left = 354
+    Top = 438
     Width = 75
     Height = 25
     Anchors = [akRight, akBottom]
     Caption = 'SAIR'
-    TabOrder = 1
+    TabOrder = 0
     OnClick = btnSairClick
   end
   object pnlPlanoDeFundo: TPanel
-    Left = 10
-    Top = 8
+    Left = 18
+    Top = 192
     Width = 427
     Height = 41
     TabOrder = 2
@@ -109,7 +109,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     end
   end
   object pnlProgramaBandeja: TPanel
-    Left = 8
+    Left = 16
     Top = 91
     Width = 429
     Height = 41

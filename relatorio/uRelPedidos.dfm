@@ -187,22 +187,22 @@ object frmRelPedidos: TfrmRelPedidos
           object RLLabel3: TRLLabel
             Left = 0
             Top = 2
-            Width = 17
+            Width = 87
             Height = 16
-            Caption = 'ID'
+            Caption = 'N'#186' do Pedido'
             Transparent = False
           end
           object RLLabel4: TRLLabel
-            Left = 87
+            Left = 95
             Top = 2
-            Width = 66
+            Width = 110
             Height = 16
-            Caption = 'ID Cliente'
+            Caption = 'Nome do Cliente'
             Transparent = False
           end
           object RLLabel5: TRLLabel
             Left = 477
-            Top = 3
+            Top = 2
             Width = 74
             Height = 16
             Alignment = taRightJustify
@@ -210,19 +210,19 @@ object frmRelPedidos: TfrmRelPedidos
             Transparent = False
           end
           object RLLabel10: TRLLabel
-            Left = 169
-            Top = 3
-            Width = 71
+            Left = 226
+            Top = 2
+            Width = 115
             Height = 16
-            Caption = 'ID Produto'
+            Caption = 'Nome do Produto'
             Transparent = False
           end
           object RLLabel11: TRLLabel
-            Left = 337
-            Top = 3
-            Width = 110
+            Left = 343
+            Top = 2
+            Width = 114
             Height = 16
-            Caption = 'Qualtidade Total'
+            Caption = 'Quantidade Total'
             Transparent = False
           end
           object RLLabel9: TRLLabel
@@ -242,8 +242,8 @@ object frmRelPedidos: TfrmRelPedidos
         Height = 24
         object RLDBText1: TRLDBText
           Left = 3
-          Top = 6
-          Width = 14
+          Top = 2
+          Width = 54
           Height = 16
           DataField = 'id'
           DataSource = dtsPedidos
@@ -256,12 +256,12 @@ object frmRelPedidos: TfrmRelPedidos
           Text = ''
         end
         object RLDBText2: TRLDBText
-          Left = 94
-          Top = 6
-          Width = 59
+          Left = 129
+          Top = 2
+          Width = 76
           Height = 16
           Alignment = taRightJustify
-          DataField = 'id_cliente'
+          DataField = 'nomeCliente'
           DataSource = dtsPedidos
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -273,7 +273,7 @@ object frmRelPedidos: TfrmRelPedidos
         end
         object RLDBText4: TRLDBText
           Left = 489
-          Top = 6
+          Top = 2
           Width = 62
           Height = 16
           Alignment = taRightJustify
@@ -288,12 +288,12 @@ object frmRelPedidos: TfrmRelPedidos
           Text = ''
         end
         object RLDBText3: TRLDBText
-          Left = 176
-          Top = 6
-          Width = 64
+          Left = 260
+          Top = 2
+          Width = 81
           Height = 16
           Alignment = taRightJustify
-          DataField = 'id_produto'
+          DataField = 'nomeProduto'
           DataSource = dtsPedidos
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -304,8 +304,8 @@ object frmRelPedidos: TfrmRelPedidos
           Text = ''
         end
         object RLDBText6: TRLDBText
-          Left = 393
-          Top = 5
+          Left = 403
+          Top = 2
           Width = 54
           Height = 16
           Alignment = taRightJustify
@@ -321,7 +321,7 @@ object frmRelPedidos: TfrmRelPedidos
         end
         object RLDBText7: TRLDBText
           Left = 593
-          Top = 6
+          Top = 2
           Width = 122
           Height = 16
           Alignment = taRightJustify
@@ -390,11 +390,17 @@ object frmRelPedidos: TfrmRelPedidos
     Active = True
     SQL.Strings = (
       'use TesteDelphi'
-      'Select * FROM pedidos'
+      'Select '
+      #9'pedidos.*,'
+      #9'clientes.nome as nomeCliente,'
+      #9'produtos.nome as nomeProduto'
+      'FROM pedidos'
+      'LEFT JOIN clientes ON pedidos.id_cliente = clientes.id'
+      'LEFT JOIN produtos ON pedidos.id_produto = produtos.id'
       
         '         WHERE pedidos.data_inclusao BETWEEN :DataInicio AND DAT' +
         'EADD(day,1,:DataFim)'
-      '        ORDER BY data_inclusao')
+      '        ORDER BY pedidos.data_inclusao')
     Params = <
       item
         DataType = ftDate
@@ -447,6 +453,12 @@ object frmRelPedidos: TfrmRelPedidos
     end
     object QryPedidosdata_edicao: TDateTimeField
       FieldName = 'data_edicao'
+    end
+    object QryPedidosnomeCliente: TWideStringField
+      FieldName = 'nomeCliente'
+    end
+    object QryPedidosnomeProduto: TWideStringField
+      FieldName = 'nomeProduto'
     end
   end
   object dtsPedidos: TDataSource

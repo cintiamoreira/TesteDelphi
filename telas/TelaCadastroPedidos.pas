@@ -213,6 +213,7 @@ begin
   lblDataInclusao.Visible := false;
   edtDataInclusao.Visible := false;
   edtDataEdicao.Visible := false;
+    btnEditar.Enabled := false;
 end;
 
 procedure TfrmTelaCadastroPedidos.PrepararEditar;
@@ -293,9 +294,9 @@ end;
 procedure TfrmTelaCadastroPedidos.atualizarLabelClienteProdutoSelecionados();
 begin
   if clienteSelecionado <> nil then
-    lblClienteSelecionado.Caption := 'Selecionado: ' + Self.clienteSelecionado.nome ;
+    lblClienteSelecionado.Caption := 'Cliente selecionado: ('+ IntToStr(Self.clienteSelecionado.id) + ') ' + Self.clienteSelecionado.nome ;
   if produtoSelecionado <> nil then
-    lblProdutoSelecionado.Caption := 'Selecionado: ' + Self.produtoSelecionado.nome;
+    lblProdutoSelecionado.Caption := 'Produto selecionado: ('+ IntToStr(Self.produtoSelecionado.id) + ') '  + Self.produtoSelecionado.nome;
 end;
 
 procedure TfrmTelaCadastroPedidos.atualizarValoresDoPedido();

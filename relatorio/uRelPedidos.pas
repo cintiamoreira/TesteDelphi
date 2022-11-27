@@ -43,6 +43,12 @@ type
     RLPDFFilter1: TRLPDFFilter;
     RLXLSXFilter1: TRLXLSXFilter;
     RLXLSFilter1: TRLXLSFilter;
+    RLLabel10: TRLLabel;
+    RLDBText3: TRLDBText;
+    RLLabel11: TRLLabel;
+    RLDBText6: TRLDBText;
+    RLLabel9: TRLLabel;
+    RLDBText7: TRLDBText;
     QryPedidosid: TIntegerField;
     QryPedidosid_produto: TIntegerField;
     QryPedidosid_cliente: TIntegerField;
@@ -51,12 +57,8 @@ type
     QryPedidosvalor_total_desconto: TFloatField;
     QryPedidosdata_inclusao: TDateTimeField;
     QryPedidosdata_edicao: TDateTimeField;
-    RLLabel10: TRLLabel;
-    RLDBText3: TRLDBText;
-    RLLabel11: TRLLabel;
-    RLDBText6: TRLDBText;
-    RLLabel9: TRLLabel;
-    RLDBText7: TRLDBText;
+    QryPedidosnomeCliente: TWideStringField;
+    QryPedidosnomeProduto: TWideStringField;
   private
     { Private declarations }
   public

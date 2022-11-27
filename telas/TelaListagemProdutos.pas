@@ -55,6 +55,7 @@ begin
     ShowMessage('APAGADO com sucesso')
   else
     ShowMessage('Ocorreu um ERRO');
+  qryListagem.Refresh;
 end;
 
 procedure TfrmTelaListagemProdutos.btnEditarClick(Sender: TObject);
@@ -104,6 +105,7 @@ begin
   inherited;
   frmTelaCadastroProdutos := TfrmTelaCadastroProdutos.Create(Self, estadoInicial, produtoInicial);
   frmTelaCadastroProdutos.ShowModal;
+  qryListagem.Refresh;
   frmTelaCadastroProdutos.Release;
 end;
 

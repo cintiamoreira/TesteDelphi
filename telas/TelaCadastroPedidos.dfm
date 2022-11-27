@@ -58,16 +58,17 @@ inherited frmTelaCadastroPedidos: TfrmTelaCadastroPedidos
     object lblClienteSelecionado: TLabel
       Left = 298
       Top = 6
-      Width = 61
+      Width = 96
       Height = 13
-      Caption = 'Selecionado:'
+      Caption = 'Cliente selecionado:'
     end
     object lblProdutoSelecionado: TLabel
-      Left = 942
-      Top = 6
-      Width = 61
+      Left = 780
+      Top = 5
+      Width = 101
       Height = 13
-      Caption = 'Selecionado:'
+      Anchors = [akRight, akBottom]
+      Caption = 'Produto selecionado:'
     end
     object edtValorTotalDesconto: TEdit
       Left = 445

@@ -1,11 +1,11 @@
 inherited frmTelaListagemFuncionarios: TfrmTelaListagemFuncionarios
   Caption = 'Listagem de Funcionarios'
-  ClientWidth = 848
-  ExplicitWidth = 864
+  ClientWidth = 853
+  ExplicitWidth = 869
   PixelsPerInch = 96
   TextHeight = 13
   inherited grdListagem: TDBGrid
-    Width = 848
+    Width = 853
     OnDblClick = grdListagemDblClick
     Columns = <
       item
@@ -41,25 +41,25 @@ inherited frmTelaListagemFuncionarios: TfrmTelaListagemFuncionarios
       end>
   end
   inherited Panel1: TPanel
-    Width = 848
+    Width = 853
     ExplicitWidth = 841
     inherited btnCadastrar: TBitBtn
-      Left = 511
+      Left = 516
       Anchors = [akRight, akBottom]
       OnClick = btnCadastrarClick
     end
     inherited btnEditar: TBitBtn
-      Left = 592
+      Left = 597
       Anchors = [akRight, akBottom]
       OnClick = btnEditarClick
     end
     inherited btnDeletar: TBitBtn
-      Left = 673
+      Left = 678
       Anchors = [akRight, akBottom]
       OnClick = btnDeletarClick
     end
     inherited btnFechar: TBitBtn
-      Left = 754
+      Left = 759
       Anchors = [akRight, akBottom]
       OnClick = btnFecharClick
     end
@@ -70,6 +70,7 @@ inherited frmTelaListagemFuncionarios: TfrmTelaListagemFuncionarios
   end
   inherited qryListagem: TZQuery
     Connection = dtmPrincipal.ConexaoDB
+    Active = True
     SQL.Strings = (
       'select * from funcionarios')
     Left = 280
