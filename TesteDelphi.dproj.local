@@ -10,5 +10,10 @@
     <Transaction>2022/11/26 20:56:28.071,=C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\datamodule\uDTMConexao.pas</Transaction>
     <Transaction>2022/11/26 20:57:03.174,=C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\TelaHerancaCadastro.pas</Transaction>
     <Transaction>2022/11/26 20:57:09.631,=C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\TelaHerancaListagem.pas</Transaction>
+    <Transaction>2022/11/26 21:03:27.402,=C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\classes\cClientes.pas</Transaction>
+    <Transaction>2022/11/26 21:03:27.436,=C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\classes\cPedidos.pas</Transaction>
+    <Transaction>2022/11/26 21:03:27.479,=C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\classes\cProdutos.pas</Transaction>
+    <Transaction>2022/11/26 21:08:58.304,=C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\telas\TelaCadastroProdutos.pas</Transaction>
+    <Transaction>2022/11/26 21:08:58.420,=C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\telas\TelaListagemProdutos.pas</Transaction>
   </Transactions>
 </BorlandProject>

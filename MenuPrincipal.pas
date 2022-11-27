@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
    System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-   Vcl.Menus, uDTMConexao;
+   Vcl.Menus, uDTMConexao,
+   TelaListagemProdutos;
 
 type
   TfrmPrincipal = class(TForm)
@@ -39,13 +40,13 @@ type
 
 var
   frmPrincipal: TfrmPrincipal;
-  {frmRelProdutos: TfrmRelProdutos;
-    frmRelProdutosPorData: TfrmRelProdutosPorData;
-      frmRelPedidosPorData: TfrmRelPedidosPorData;
-        frmTelaListagemFuncionarios: TfrmTelaListagemFuncionarios;
-          frmTelaFiltroRelatorioProdutos: TfrmTelaFiltroRelatorioProdutos;
-            frmTelaFiltroRelatorioPedidos: TfrmTelaFiltroRelatorioPedidos;
-              frmuRelPedidos : TfrmRelPedidos;}
+  //frmRelProdutos: TfrmRelProdutos;
+  //frmRelProdutosPorData: TfrmRelProdutosPorData;
+  //frmRelPedidosPorData: TfrmRelPedidosPorData;
+  //frmTelaListagemFuncionarios: TfrmTelaListagemFuncionarios;
+  //frmTelaFiltroRelatorioProdutos: TfrmTelaFiltroRelatorioProdutos;
+  //frmTelaFiltroRelatorioPedidos: TfrmTelaFiltroRelatorioPedidos;
+  //frmuRelPedidos : TfrmRelPedidos;
 
 implementation
 
@@ -76,9 +77,9 @@ end;
 
 procedure TfrmPrincipal.menuCadastrosProdutosClick(Sender: TObject);
 begin
-  //frmTelaListagemProdutos := TfrmTelaListagemProdutos.Create(Self);
-  //frmTelaListagemProdutos.ShowModal;
-  //frmTelaListagemProdutos.Release;
+  frmTelaListagemProdutos := TfrmTelaListagemProdutos.Create(Self);
+  frmTelaListagemProdutos.ShowModal;
+  frmTelaListagemProdutos.Release;
 end;
 
 procedure TfrmPrincipal.menuFuncionariosClick(Sender: TObject);
