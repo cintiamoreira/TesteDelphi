@@ -11,7 +11,9 @@ uses
   cPedidos in 'classes\cPedidos.pas',
   cProdutos in 'classes\cProdutos.pas',
   TelaCadastroProdutos in 'telas\TelaCadastroProdutos.pas' {frmTelaCadastroProdutos},
-  TelaListagemProdutos in 'telas\TelaListagemProdutos.pas' {frmTelaListagemProdutos};
+  TelaListagemProdutos in 'telas\TelaListagemProdutos.pas' {frmTelaListagemProdutos},
+  TelaCadastroPedidos in 'telas\TelaCadastroPedidos.pas' {frmTelaCadastroPedidos},
+  TelaListagemPedidos in 'telas\TelaListagemPedidos.pas' {frmTelaListagemPedidos};
 
 {$R *.res}
 
@@ -21,5 +23,7 @@ begin
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmTelaCadastroProdutos, frmTelaCadastroProdutos);
   Application.CreateForm(TfrmTelaListagemProdutos, frmTelaListagemProdutos);
+  Application.CreateForm(TfrmTelaCadastroPedidos, frmTelaCadastroPedidos);
+  Application.CreateForm(TfrmTelaListagemPedidos, frmTelaListagemPedidos);
   Application.Run;
 end.
