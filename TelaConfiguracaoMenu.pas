@@ -3,25 +3,28 @@ unit TelaConfiguracaoMenu;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Registry, WinProcs,
-  Vcl.ExtCtrls;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  Vcl.StdCtrls, Registry, WinProcs, Vcl.ExtCtrls, TelaCadastroEmailRelatorios;
 
 type
   TfrmTelaConfiguracaoMenu = class(TForm)
-    lblMudarPlanoFundo: TLabel;
-    Button1: TButton;
-    Label2: TLabel;
-    Button2: TButton;
-    Label3: TLabel;
-    Button3: TButton;
-    Label4: TLabel;
-    Button4: TButton;
+    lblAplicarDesconto: TLabel;
+    btnAplicarDesconto: TButton;
+    lblProgramaBandeja: TLabel;
+    btnProgramaBandeja: TButton;
+    lblCadastrarEmail: TLabel;
+    btnCadastrarEmail: TButton;
     btnSair: TButton;
     OpenDialog1: TOpenDialog;
     imgBackground: TImage;
-    procedure Button1Click(Sender: TObject);
+    pnlPlanoDeFundo: TPanel;
+    lblMudarPlanoFundo: TLabel;
+    btnBuscarImagem: TButton;
+    pnlProgramaBandeja: TPanel;
+    procedure btnBuscarImagemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnCadastrarEmailClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -33,6 +36,7 @@ type
 
 var
   frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu;
+  frmTelaCadastroEmailRelatorios : TfrmTelaCadastroEmailRelatorios;
 
 implementation
 
@@ -56,7 +60,7 @@ begin
   SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, nil, SPIF_SENDWININICHANGE);
 end;
 
-procedure TfrmTelaConfiguracaoMenu.Button1Click(Sender: TObject);
+procedure TfrmTelaConfiguracaoMenu.btnBuscarImagemClick(Sender: TObject);
 begin
    if OpenDialog1.Execute then
    begin
@@ -64,6 +68,13 @@ begin
    end;
 end;
 
+
+procedure TfrmTelaConfiguracaoMenu.btnCadastrarEmailClick(Sender: TObject);
+begin
+  frmTelaCadastroEmailRelatorios := TfrmTelaCadastroEmailRelatorios.Create(Self);
+  frmTelaCadastroEmailRelatorios.ShowModal;
+  frmTelaCadastroEmailRelatorios.Release;
+end;
 
 procedure TfrmTelaConfiguracaoMenu.FormCreate(Sender: TObject);
 begin

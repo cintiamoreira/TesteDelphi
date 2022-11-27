@@ -23,7 +23,8 @@ uses
   uRelPedidos in 'relatorio\uRelPedidos.pas' {frmRelPedidos},
   TelaFiltroRelPedidos in 'relatorio\TelaFiltroRelPedidos.pas' {frmTelaFiltroRelPedidos},
   TelaFiltroRelProdutos in 'relatorio\TelaFiltroRelProdutos.pas' {frmTelaFiltroRelProdutos},
-  TelaConfiguracaoMenu in 'TelaConfiguracaoMenu.pas' {frmTelaConfiguracaoMenu};
+  TelaConfiguracaoMenu in 'TelaConfiguracaoMenu.pas' {frmTelaConfiguracaoMenu},
+  TelaCadastroEmailRelatorios in 'telas\TelaCadastroEmailRelatorios.pas' {frmTelaHerancaCadastro1};
 
 {alterarPlanoFundo}
 
@@ -33,5 +34,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmTelaHerancaCadastro1, frmTelaHerancaCadastro1);
   Application.Run;
 end.

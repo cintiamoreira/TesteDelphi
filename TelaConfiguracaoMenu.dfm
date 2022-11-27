@@ -2,8 +2,8 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
   Left = 0
   Top = 0
   Caption = 'Configura'#231#245'es'
-  ClientHeight = 444
-  ClientWidth = 414
+  ClientHeight = 407
+  ClientWidth = 447
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,115 +13,134 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
   OldCreateOrder = False
   OnCreate = FormCreate
   DesignSize = (
-    414
-    444)
+    447
+    407)
   PixelsPerInch = 96
   TextHeight = 13
-  object lblMudarPlanoFundo: TLabel
-    Left = 32
-    Top = 53
-    Width = 194
-    Height = 19
-    Caption = 'MUDAR PLANO DE FUNDO'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = 10053171
-    Font.Height = -16
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-  end
-  object Label2: TLabel
-    Left = 34
-    Top = 136
-    Width = 154
-    Height = 19
-    Caption = 'APLICAR DESCONTO'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = 10053171
-    Font.Height = -16
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-  end
-  object Label3: TLabel
-    Left = 34
-    Top = 218
-    Width = 248
-    Height = 19
-    Caption = 'DEIXAR PROGRAMA NA BANDEJA'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = 10053171
-    Font.Height = -16
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-  end
-  object Label4: TLabel
-    Left = 32
-    Top = 304
-    Width = 363
-    Height = 19
-    Caption = 'CADASTRAR EMAIL PARA RECEBER RELAT'#211'RIOS'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = 10053171
-    Font.Height = -16
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-  end
   object imgBackground: TImage
-    Left = 256
-    Top = 53
-    Width = 139
-    Height = 132
+    Left = 10
+    Top = 183
+    Width = 427
+    Height = 162
     Center = True
     Stretch = True
   end
-  object Button1: TButton
-    Left = 34
-    Top = 83
+  object lblAplicarDesconto: TLabel
+    Left = 200
+    Top = 63
+    Width = 126
+    Height = 16
+    Caption = 'APLICAR DESCONTO'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 10053171
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object lblCadastrarEmail: TLabel
+    Left = 67
+    Top = 149
+    Width = 259
+    Height = 16
+    Caption = 'CADASTRO DE EMAIL PARA RELAT'#211'RIOS'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 10053171
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object btnAplicarDesconto: TButton
+    Tag = 1
+    Left = 346
+    Top = 60
     Width = 75
     Height = 25
-    Caption = 'Button1'
+    Caption = 'OK'
     TabOrder = 0
-    OnClick = Button1Click
   end
-  object Button2: TButton
-    Left = 34
-    Top = 166
+  object btnCadastrarEmail: TButton
+    Left = 346
+    Top = 146
     Width = 75
     Height = 25
-    Caption = 'Button2'
-    TabOrder = 1
-  end
-  object Button3: TButton
-    Left = 32
-    Top = 248
-    Width = 75
-    Height = 25
-    Caption = 'Button3'
-    TabOrder = 2
-  end
-  object Button4: TButton
-    Left = 34
-    Top = 334
-    Width = 75
-    Height = 25
-    Caption = 'Button4'
+    Caption = 'CADASTRAR'
     TabOrder = 3
+    OnClick = btnCadastrarEmailClick
   end
   object btnSair: TButton
-    Left = 305
-    Top = 400
+    Left = 346
+    Top = 363
     Width = 75
     Height = 25
     Anchors = [akRight, akBottom]
     Caption = 'SAIR'
+    TabOrder = 1
+    ExplicitLeft = 438
+    ExplicitTop = 400
+  end
+  object pnlPlanoDeFundo: TPanel
+    Left = 10
+    Top = 8
+    Width = 427
+    Height = 41
+    TabOrder = 2
+    object lblMudarPlanoFundo: TLabel
+      Left = 159
+      Top = 12
+      Width = 157
+      Height = 16
+      Caption = 'MUDAR PLANO DE FUNDO'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10053171
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object btnBuscarImagem: TButton
+      Left = 336
+      Top = 9
+      Width = 75
+      Height = 25
+      Caption = 'BUSCAR'
+      TabOrder = 0
+      OnClick = btnBuscarImagemClick
+    end
+  end
+  object pnlProgramaBandeja: TPanel
+    Left = 8
+    Top = 91
+    Width = 429
+    Height = 41
     TabOrder = 4
+    object lblProgramaBandeja: TLabel
+      Left = 107
+      Top = 14
+      Width = 211
+      Height = 16
+      Caption = 'DEIXAR PROGRAMA NA BANDEJA'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 10053171
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object btnProgramaBandeja: TButton
+      Tag = 2
+      Left = 338
+      Top = 9
+      Width = 75
+      Height = 25
+      Caption = 'APLICAR'
+      TabOrder = 0
+    end
   end
   object OpenDialog1: TOpenDialog
     Filter = 'JPG files|*.jpg'
-    Left = 136
-    Top = 80
+    Left = 48
+    Top = 32
   end
 end

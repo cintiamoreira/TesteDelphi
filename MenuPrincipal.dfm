@@ -2,7 +2,7 @@ object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Menu Principal'
-  ClientHeight = 535
+  ClientHeight = 549
   ClientWidth = 794
   Color = 14739951
   Font.Charset = DEFAULT_CHARSET
@@ -17,16 +17,17 @@ object frmPrincipal: TfrmPrincipal
   PixelsPerInch = 96
   TextHeight = 19
   object imgBackground: TImage
-    Left = 0
-    Top = 0
-    Width = 794
-    Height = 535
-    Align = alClient
-    AutoSize = True
+    AlignWithMargins = True
+    Left = 9
+    Top = 29
+    Width = 771
+    Height = 515
+    Align = alCustom
+    Anchors = [akLeft, akTop, akRight, akBottom]
     Center = True
     Stretch = True
-    ExplicitWidth = 793
-    ExplicitHeight = 537
+    ExplicitLeft = 6
+    ExplicitTop = 26
   end
   object mainPrincipal: TMainMenu
     Left = 720
