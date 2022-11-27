@@ -1,0 +1,298 @@
+﻿unit cFuncionarios;
+
+interface
+
+//Lista de Units
+uses System.Classes,
+     Vcl.Controls,
+     Vcl.ExtCtrls,
+     Vcl.Dialogs,
+     ZConnection,
+     ZAbstractConnection,
+     ZAbstractRODataset,
+     ZAbstractDataset,
+     ZDataset,
+     System.SysUtils;
+
+type
+//Declara��o do tipo da Classe
+
+  TFuncionarios = class
+
+  private
+  //Vari�veis Privadas somente dentro da Classe
+
+    ConexaoDB : TZConnection;
+    QryListagem:  TZQuery;
+    //Campos
+    F_id : Integer; //Int
+    F_nome_completo : string;    //Varchar
+    F_cpf : string;    //Varchar
+    F_senha : Integer;    //Varchar
+    F_data_inclusao : string;    //Varchar
+    F_data_edicao : string;    //Varchar
+
+    function getID: Integer;
+    function getNomeCompleto: string;
+    function getCPF: string;
+    function getSenha: Integer;
+    function getDataInclusao: string;
+    function getDataEdicao: string;
+
+    procedure setId(const newId: Integer);
+    procedure setNomeCompleto(const newNomeCompleto: string);
+    procedure setCPF(const newCPF: string);
+    procedure setSenha(const newSenha: Integer);
+    procedure setDataInclusao(const newDataInclusao: string);
+    procedure setDataEdicao(const newDataEdicao: string);
+
+  public
+  //Construtor de uma Classe
+
+    constructor Create (aConexao : TZConnection; aQuery: TZQuery);
+
+    destructor Destroy; override;
+
+    function Inserir : Boolean;
+    function Atualizar : Boolean;
+    function Apagar : Boolean;
+    function Selecionar (id : Integer) : Boolean;
+
+  published
+
+    property id : Integer     read getId     write setId;
+    property nome : string   read getNomeCompleto  write setNomeCompleto;
+    property valor : string   read getCPF  write setCPF;
+    property quantidade : Integer   read getSenha  write setSenha;
+    property dataInclusao : string   read getDataInclusao  write setDataInclusao;
+    property dataEdicao : string   read getDataEdicao  write setDataInclusao;
+
+  end;
+
+implementation
+
+{$REGION 'Constructor and Destructor'}
+constructor TFuncionarios.Create (aConexao : TZConnection; aQuery: TZQuery);
+begin
+  ConexaoDB := aConexao;
+  QryListagem := aQuery;
+end;
+
+destructor TFuncionarios.Destroy;
+begin
+  inherited;
+end;
+{$ENDREGION}
+
+{$REGION 'CRUD'}
+function TFuncionarios.Apagar : Boolean;
+var Qry:TZQuery;
+begin
+  if MessageDlg('Apagar o Registro: '+#13+#13+
+                'C�digo: '+IntToStr (F_id) +#13+
+                'Nome: '+F_nome_completo,mtConfirmation, [mbYes, mbNo],0)=mrNo
+  then begin
+      Result := false;
+      Abort;
+  end;
+
+  try
+    Result := True;
+    Qry := TZQuery.Create(nil);
+    Qry.Connection := ConexaoDB;
+    Qry.SQL.Clear;
+    Qry.SQL.Add('DELETE FROM funcionarios ' +
+                '   WHERE id =:idFuncionario ');
+
+    Qry.ParamByName('idFuncionario').AsInteger := F_id;
+
+    try
+      ConexaoDB.StartTransaction;
+      Qry.ExecSQL;
+      ConexaoDB.Commit;
+      Result := True;
+    except
+      ConexaoDB.Rollback;
+      Result := False;
+    end;
+
+  finally
+    if Assigned (Qry) then
+       FreeAndNil (Qry);
+  end;
+end;
+
+function TFuncionarios.Atualizar: Boolean;
+var Qry : TZQuery;
+begin
+  try
+    Result := True;
+    Qry := TZQuery.Create(nil);
+    Qry.Connection := ConexaoDB;
+    Qry.SQL.Clear;
+    Qry.SQL.Add('UPDATE funcionarios ' +
+                '   SET nome_completo =:nomeCompleto, ' +
+                '   cpf =:cpf, ' +
+                '   senha =:senha, ' +
+                '   data_edicao = GETDATE() ' +
+                '   WHERE id = :idFuncionario ');
+
+    Qry.ParamByName('idFuncionario').AsInteger := Self.F_id;
+    Qry.ParamByName('nomeCompleto').AsString    := Self.F_nome_completo;
+    Qry.ParamByName('cpf').AsString    := Self.F_cpf;
+    Qry.ParamByName('senha').AsString    := Self.F_senha;
+
+    try
+      ConexaoDB.StartTransaction;
+      Qry.ExecSQL;
+      ConexaoDB.Commit;
+      QryListagem.Refresh;
+      Result := True;
+    except
+      ConexaoDB.Rollback;
+      Result := False;
+    end;
+
+  finally
+    if Assigned (Qry) then
+       FreeAndNil (Qry);
+  end;
+end;
+
+function TFuncionarios.Inserir: Boolean;
+var Qry : TZQuery;
+begin
+  try
+    Result := True;
+    Qry := TZQuery.Create(nil);
+    Qry.Connection := ConexaoDB;
+    Qry.SQL.Clear;
+    Qry.SQL.Add(
+    'INSERT INTO funcionarios (nome_completo, cpf, senha,  data_inclusao, data_edicao) ' +
+    'values (:nomeCompleto, :cpf, :senha, GETDATE(), GETDATE());'
+    );
+
+    Qry.ParamByName('nomeCompleto').AsString := Self.F_nome_completo;
+    Qry.ParamByName('cpf').AsString := Self.F_cpf;
+    Qry.ParamByName('senha').AsString := Self.F_senha;
+
+     try
+      ConexaoDB.StartTransaction;
+      Qry.ExecSQL;
+      ConexaoDB.Commit;
+      QryListagem.Refresh;
+      Result := True;
+    except
+      ConexaoDB.Rollback;
+      Result := False;
+    end;
+
+  finally
+    if Assigned (Qry) then
+       FreeAndNil (Qry);
+  end;
+end;
+
+function TFuncionarios.Selecionar(id: Integer): Boolean;
+var Qry : TZQuery;
+begin
+    try
+      Result := True;
+      Qry := TZQuery.Create(nil);
+      Qry.Connection := ConexaoDB;
+      Qry.SQL.Clear;
+
+      Qry.SQL.Add ('SELECT * ' +
+                  'FROM funcionarios ' +
+                  'WHERE id=:idFuncionario');
+
+      Qry.ParamByName('idFuncionario').AsInteger := id;
+
+      try
+        Qry.Open;
+
+        Self.F_id := Qry.FieldByName('id').AsInteger;
+        Self.F_nome_completo   := Qry.FieldByName('nome_completo').AsString;
+        Self.F_cpf := Qry.FieldByName('cpf').AsString;
+        Self.F_senha := Qry.FieldByName('senha').AsString;
+        Self.F_data_inclusao := Qry.FieldByName('data_inclusao').AsString;
+        Self.F_data_edicao := Qry.FieldByName('data_edicao').AsString;
+      except
+         Result := False;
+      end;
+
+  finally
+    if Assigned (Qry) then
+       FreeAndNil (Qry);
+  end;
+end;
+{$ENDREGION}
+
+
+{$REGION 'GETS'}
+
+
+function TFuncionarios.getId: Integer;
+begin
+  Result := Self.F_id;
+end;
+
+
+function TFuncionarios.getNomeCompleto: string;
+begin
+  Result := Self.F_nome_completo;
+end;
+
+function TFuncionarios.getCPF: string;
+begin
+  Result := Self.F_cpf;
+end;
+function TFuncionarios.getSenha: Integer;
+begin
+  Result := Self.F_senha;
+end;
+function TFuncionarios.getDataInclusao: string;
+begin
+  Result := Self.F_data_inclusao;
+end;
+function TFuncionarios.getDataEdicao: string;
+begin
+  Result := Self.F_data_edicao;
+end;
+{$ENDREGION}
+
+
+{$REGION 'SETS'}
+procedure TFuncionarios.setId(const newId: Integer);
+begin
+  Self.F_id := newId;
+end;
+
+procedure TFuncionarios.setNomeCompleto(const newNomeCompleto: string);
+begin
+   Self.F_nome_completo := newNomeCompleto;
+end;
+
+procedure TFuncionarios.setCPF(const newCPF: string);
+begin
+   Self.F_cpf := newCPF;
+end;
+
+procedure TFuncionarios.setSenha(const newSenha: Integer);
+begin
+   Self.F_senha := newSenha;
+end;
+
+procedure TFuncionarios.setDataInclusao(const newDataInclusao: string);
+begin
+   Self.F_data_inclusao := newDataInclusao;
+end;
+
+procedure TFuncionarios.setDataEdicao(const newDataEdicao: string);
+begin
+   Self.F_data_edicao := newDataEdicao;
+end;
+{$ENDREGION}
+
+
+end.
