@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/10/20 22:28:39.000.681,=C:\Users\cinti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/11/26 20:51:05.000.029,=C:\Users\cinti\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/11/26 20:51:29.000.705,C:\Users\cinti\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\MenuPrincipal.dfm</Transaction>
+    <Transaction>2022/11/26 20:51:29.000.705,C:\Users\cinti\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\MenuPrincipal.pas</Transaction>
+    <Transaction>2022/11/26 20:51:50.000.196,C:\Users\cinti\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\TesteDelphi.dproj</Transaction>
+    <Transaction>2022/11/26 20:56:18.077,=C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\cadastroEnum.pas</Transaction>
+    <Transaction>2022/11/26 20:56:28.071,=C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\datamodule\uDTMConexao.pas</Transaction>
+    <Transaction>2022/11/26 20:57:03.174,=C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\TelaHerancaCadastro.pas</Transaction>
+    <Transaction>2022/11/26 20:57:09.631,=C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\TelaHerancaListagem.pas</Transaction>
+  </Transactions>
+</BorlandProject>
