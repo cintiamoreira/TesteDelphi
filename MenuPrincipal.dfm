@@ -18,16 +18,17 @@ object frmPrincipal: TfrmPrincipal
   TextHeight = 19
   object imgBackground: TImage
     AlignWithMargins = True
-    Left = 21
-    Top = 41
-    Width = 771
-    Height = 515
-    Align = alCustom
-    Anchors = [akLeft, akTop, akRight, akBottom]
+    Left = 3
+    Top = 3
+    Width = 788
+    Height = 543
+    Align = alClient
     Center = True
     Stretch = True
-    ExplicitLeft = 6
-    ExplicitTop = 26
+    ExplicitLeft = 1
+    ExplicitTop = 8
+    ExplicitWidth = 771
+    ExplicitHeight = 515
   end
   object mainPrincipal: TMainMenu
     Left = 720
