@@ -1,14 +1,14 @@
 inherited frmTelaCadastroFuncionarios: TfrmTelaCadastroFuncionarios
   Caption = 'Cadastro de Funcionarios'
   ClientHeight = 341
-  ClientWidth = 454
+  ClientWidth = 474
   OnCreate = FormCreate
-  ExplicitWidth = 470
+  ExplicitWidth = 490
   ExplicitHeight = 380
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
-    Width = 454
+    Width = 474
     Height = 277
     ExplicitLeft = 0
     ExplicitTop = 0
@@ -54,21 +54,21 @@ inherited frmTelaCadastroFuncionarios: TfrmTelaCadastroFuncionarios
     object edtNomeCompleto: TEdit
       Left = 146
       Top = 37
-      Width = 239
+      Width = 299
       Height = 21
       TabOrder = 0
     end
     object edtCPF: TEdit
       Left = 146
       Top = 79
-      Width = 121
+      Width = 167
       Height = 21
       TabOrder = 1
     end
     object edtSenha: TEdit
       Left = 146
       Top = 114
-      Width = 121
+      Width = 167
       Height = 21
       NumbersOnly = True
       PasswordChar = '*'
@@ -77,7 +77,7 @@ inherited frmTelaCadastroFuncionarios: TfrmTelaCadastroFuncionarios
     object edtInclusao: TEdit
       Left = 146
       Top = 190
-      Width = 121
+      Width = 167
       Height = 21
       Enabled = False
       TabOrder = 3
@@ -85,7 +85,7 @@ inherited frmTelaCadastroFuncionarios: TfrmTelaCadastroFuncionarios
     object edtEdicao: TEdit
       Left = 146
       Top = 224
-      Width = 121
+      Width = 167
       Height = 21
       Enabled = False
       TabOrder = 4
@@ -93,30 +93,30 @@ inherited frmTelaCadastroFuncionarios: TfrmTelaCadastroFuncionarios
   end
   inherited Panel2: TPanel
     Top = 277
-    Width = 454
+    Width = 474
     ExplicitTop = 277
     ExplicitWidth = 454
     inherited btnOK: TBitBtn
-      Left = 101
+      Left = 121
       Anchors = [akRight, akBottom]
       OnClick = btnOKClick
       ExplicitLeft = 101
     end
     inherited btnCancelar: TBitBtn
-      Left = 182
+      Left = 202
       Anchors = [akRight, akBottom]
       OnClick = btnCancelarClick
       ExplicitLeft = 182
     end
     inherited btnEditar: TBitBtn
-      Left = 263
+      Left = 283
       Anchors = [akRight, akBottom]
       Enabled = True
       OnClick = btnEditarClick
       ExplicitLeft = 263
     end
     inherited btnSair: TBitBtn
-      Left = 350
+      Left = 370
       Anchors = [akRight, akBottom]
       OnClick = btnSairClick
       ExplicitLeft = 350

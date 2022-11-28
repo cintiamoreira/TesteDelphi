@@ -1,50 +1,50 @@
 inherited frmTelaCadastroClientes: TfrmTelaCadastroClientes
   Caption = 'Cadastro de Clientes'
-  ClientHeight = 457
-  ClientWidth = 581
+  ClientHeight = 421
+  ClientWidth = 490
   OnCreate = FormCreate
-  ExplicitWidth = 597
-  ExplicitHeight = 496
+  ExplicitWidth = 506
+  ExplicitHeight = 460
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
-    Width = 581
-    Height = 393
+    Width = 490
+    Height = 357
     ExplicitLeft = 0
     ExplicitTop = 0
     ExplicitWidth = 581
     ExplicitHeight = 393
     object lblNome: TLabel
-      Left = 67
-      Top = 43
+      Left = 68
+      Top = 67
       Width = 27
       Height = 13
       Caption = 'Nome'
     end
     object lblValor: TLabel
-      Left = 75
-      Top = 118
+      Left = 76
+      Top = 142
       Width = 19
       Height = 13
       Alignment = taRightJustify
       Caption = 'CPF'
     end
     object lblCEP: TLabel
-      Left = 296
-      Top = 118
+      Left = 297
+      Top = 142
       Width = 19
       Height = 13
       Caption = 'CEP'
     end
     object lblDataInclusao: TLabel
-      Left = 13
+      Left = 14
       Top = 265
       Width = 81
       Height = 13
       Caption = 'Data de Inclus'#227'o'
     end
     object lblDescontoPromocional: TLabel
-      Left = 49
+      Left = 50
       Top = 177
       Width = 45
       Height = 13
@@ -52,21 +52,21 @@ inherited frmTelaCadastroClientes: TfrmTelaCadastroClientes
       Caption = 'Endere'#231'o'
     end
     object lblDataEdicao: TLabel
-      Left = 22
+      Left = 23
       Top = 307
       Width = 72
       Height = 13
       Caption = 'Data de Edi'#231#227'o'
     end
     object lblSobrenome: TLabel
-      Left = 40
-      Top = 80
+      Left = 41
+      Top = 104
       Width = 54
       Height = 13
       Caption = 'Sobrenome'
     end
     object lblTelefone: TLabel
-      Left = 52
+      Left = 53
       Top = 222
       Width = 42
       Height = 13
@@ -81,15 +81,15 @@ inherited frmTelaCadastroClientes: TfrmTelaCadastroClientes
       Caption = 'Celular'
     end
     object edtNome: TEdit
-      Left = 127
-      Top = 40
+      Left = 128
+      Top = 64
       Width = 321
       Height = 21
       TabOrder = 0
     end
     object edtSobrenome: TEdit
-      Left = 127
-      Top = 77
+      Left = 128
+      Top = 101
       Width = 321
       Height = 21
       TabOrder = 1
@@ -109,8 +109,8 @@ inherited frmTelaCadastroClientes: TfrmTelaCadastroClientes
       TabOrder = 8
     end
     object mskCpf: TMaskEdit
-      Left = 128
-      Top = 115
+      Left = 129
+      Top = 139
       Width = 118
       Height = 21
       EditMask = '999.999.999.99;0;_'
@@ -121,7 +121,7 @@ inherited frmTelaCadastroClientes: TfrmTelaCadastroClientes
     object edtEndereco: TEdit
       Left = 128
       Top = 174
-      Width = 316
+      Width = 321
       Height = 21
       TabOrder = 4
     end
@@ -133,49 +133,49 @@ inherited frmTelaCadastroClientes: TfrmTelaCadastroClientes
       TabOrder = 5
     end
     object edtCelular: TEdit
-      Left = 332
+      Left = 328
       Top = 219
       Width = 121
       Height = 21
       TabOrder = 6
     end
     object mskCEP: TMaskEdit
-      Left = 332
-      Top = 115
-      Width = 120
+      Left = 333
+      Top = 139
+      Width = 116
       Height = 21
-      EditMask = '99999-999;1;_'
-      MaxLength = 9
+      EditMask = '99999999;0;_'
+      MaxLength = 8
       TabOrder = 3
-      Text = '     -   '
+      Text = ''
       OnExit = mskCEPExit
     end
   end
   inherited Panel2: TPanel
-    Top = 393
-    Width = 581
+    Top = 357
+    Width = 490
     ExplicitTop = 393
     ExplicitWidth = 581
     inherited btnOK: TBitBtn
-      Left = 251
+      Left = 160
       Anchors = [akRight, akBottom]
       OnClick = btnOKClick
       ExplicitLeft = 251
     end
     inherited btnCancelar: TBitBtn
-      Left = 332
+      Left = 241
       Anchors = [akRight, akBottom]
       OnClick = btnCancelarClick
       ExplicitLeft = 332
     end
     inherited btnEditar: TBitBtn
-      Left = 411
+      Left = 320
       Anchors = [akRight, akBottom]
       OnClick = btnEditarClick
       ExplicitLeft = 411
     end
     inherited btnSair: TBitBtn
-      Left = 494
+      Left = 403
       Anchors = [akRight, akBottom]
       OnClick = btnSairClick
       ExplicitLeft = 494

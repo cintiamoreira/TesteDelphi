@@ -1,120 +1,139 @@
 inherited frmTelaCadastroPedidos: TfrmTelaCadastroPedidos
   Caption = 'Cadastro de Pedidos'
   ClientHeight = 482
-  ClientWidth = 1112
+  ClientWidth = 924
   OnCreate = FormCreate
-  ExplicitWidth = 1128
+  ExplicitWidth = 940
   ExplicitHeight = 521
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
     Top = 285
-    Width = 1112
+    Width = 924
     Height = 133
     ExplicitLeft = 0
     ExplicitTop = 285
     ExplicitWidth = 1112
     ExplicitHeight = 133
     object lblQuantidade: TLabel
-      Left = 910
-      Top = 51
-      Width = 83
+      Left = 755
+      Top = 36
+      Width = 133
       Height = 13
-      Caption = 'Quantidade Total'
+      Caption = 'QUANTIDADE DESEJADA'
       Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold, fsUnderline]
+      ParentFont = False
     end
     object lblValorTotalDesconto: TLabel
-      Left = 466
-      Top = 52
+      Left = 622
+      Top = 83
       Width = 99
       Height = 13
       Caption = 'Valor Total Desconto'
       Enabled = False
     end
     object lblDescontoPromocional: TLabel
-      Left = 715
-      Top = 51
+      Left = 670
+      Top = 36
       Width = 51
       Height = 13
       Caption = 'Valor Total'
       Enabled = False
     end
     object lblDataInclusao: TLabel
-      Left = 86
-      Top = 51
+      Left = 486
+      Top = 36
       Width = 81
       Height = 13
       Caption = 'Data de Inclus'#227'o'
       Enabled = False
     end
     object lblDataEdicao: TLabel
-      Left = 95
-      Top = 86
+      Left = 495
+      Top = 83
       Width = 72
       Height = 13
       Caption = 'Data de Edi'#231#227'o'
       Enabled = False
     end
     object lblClienteSelecionado: TLabel
-      Left = 298
-      Top = 6
-      Width = 96
+      Left = 134
+      Top = 5
+      Width = 126
       Height = 13
-      Caption = 'Cliente selecionado:'
+      Caption = 'CLIENTE SELECIONADO:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object lblProdutoSelecionado: TLabel
-      Left = 780
+      Left = 698
       Top = 5
-      Width = 101
+      Width = 136
       Height = 13
       Anchors = [akRight, akBottom]
-      Caption = 'Produto selecionado:'
+      Caption = 'PRODUTO SELECIONADO:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ExplicitLeft = 690
     end
     object edtValorTotalDesconto: TEdit
-      Left = 445
-      Top = 71
+      Left = 601
+      Top = 98
       Width = 120
       Height = 21
       Enabled = False
       TabOrder = 1
     end
     object edtValorTotal: TEdit
-      Left = 647
-      Top = 71
+      Left = 602
+      Top = 55
       Width = 119
       Height = 21
       Enabled = False
       TabOrder = 2
     end
     object edtDataInclusao: TEdit
-      Left = 191
-      Top = 45
+      Left = 455
+      Top = 55
       Width = 112
       Height = 21
       Enabled = False
       TabOrder = 3
     end
     object edtDataEdicao: TEdit
-      Left = 192
-      Top = 83
+      Left = 456
+      Top = 98
       Width = 111
       Height = 21
       Enabled = False
       TabOrder = 4
     end
     object edtQuantidadeTotal: TEdit
-      Left = 872
-      Top = 71
+      Left = 767
+      Top = 55
       Width = 121
       Height = 21
       TabOrder = 0
     end
     object btnCalcular: TBitBtn
-      Left = 1005
-      Top = 67
+      Left = 813
+      Top = 94
       Width = 75
       Height = 25
-      Caption = 'Calcular'
+      Caption = 'CALCULAR'
       Enabled = False
       TabOrder = 5
       OnClick = btnCalcularClick
@@ -122,45 +141,46 @@ inherited frmTelaCadastroPedidos: TfrmTelaCadastroPedidos
   end
   inherited Panel2: TPanel
     Top = 418
-    Width = 1112
+    Width = 924
     ExplicitTop = 418
     ExplicitWidth = 1112
     inherited btnOK: TBitBtn
-      Left = 766
+      Left = 589
       Anchors = [akRight, akBottom]
       OnClick = btnOKClick
-      ExplicitLeft = 766
+      ExplicitLeft = 570
     end
     inherited btnCancelar: TBitBtn
-      Left = 847
+      Left = 670
       Anchors = [akRight, akBottom]
-      ExplicitLeft = 847
+      ExplicitLeft = 651
     end
     inherited btnEditar: TBitBtn
-      Left = 928
+      Left = 751
       Anchors = [akRight, akBottom]
       Enabled = True
       OnClick = btnEditarClick
-      ExplicitLeft = 928
+      ExplicitLeft = 732
     end
     inherited btnSair: TBitBtn
-      Left = 1009
+      Left = 832
       Anchors = [akRight, akBottom]
       OnClick = btnSairClick
-      ExplicitLeft = 1009
+      ExplicitLeft = 813
     end
   end
   object Panel3: TPanel
     Left = 0
     Top = 0
-    Width = 1112
+    Width = 924
     Height = 285
     Align = alTop
     TabOrder = 2
+    ExplicitWidth = 1112
     object grdProdutos: TDBGrid
-      Left = 423
+      Left = 422
       Top = 1
-      Width = 688
+      Width = 501
       Height = 283
       Align = alRight
       DataSource = dtsProdutos
@@ -195,6 +215,7 @@ inherited frmTelaCadastroPedidos: TfrmTelaCadastroPedidos
         item
           Expanded = False
           FieldName = 'desconto_promocional'
+          Width = 142
           Visible = True
         end
         item
@@ -211,7 +232,7 @@ inherited frmTelaCadastroPedidos: TfrmTelaCadastroPedidos
     object grdClientes: TDBGrid
       Left = 1
       Top = 1
-      Width = 416
+      Width = 424
       Height = 283
       Align = alLeft
       DataSource = dtsCliente

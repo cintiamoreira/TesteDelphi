@@ -16,7 +16,7 @@ inherited frmTelaCadastroProdutos: TfrmTelaCadastroProdutos
     ExplicitHeight = 277
     object lblNome: TLabel
       Left = 98
-      Top = 40
+      Top = 50
       Width = 27
       Height = 13
       Caption = 'Nome'
@@ -60,8 +60,8 @@ inherited frmTelaCadastroProdutos: TfrmTelaCadastroProdutos
     end
     object edtNome: TEdit
       Left = 146
-      Top = 37
-      Width = 239
+      Top = 42
+      Width = 279
       Height = 21
       TabOrder = 0
     end

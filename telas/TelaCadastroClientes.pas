@@ -113,7 +113,7 @@
   procedure TfrmTelaCadastroClientes.mskCEPExit(Sender: TObject);
   begin
     inherited;
-    RESTRequest1.Resource :=   mskCEP.Text + '/json';
+    RestRequest1.Resource :=   mskCEP.Text + '/json';
     RestRequest1.Execute;
     if RESTRequest1.Response.StatusCode = 200 then
     begin

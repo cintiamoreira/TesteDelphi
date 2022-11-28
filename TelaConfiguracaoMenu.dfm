@@ -2,9 +2,9 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
   Left = 0
   Top = 0
   Caption = 'Configura'#231#245'es'
-  ClientHeight = 482
+  ClientHeight = 536
   ClientWidth = 461
-  Color = clBtnFace
+  Color = 15202559
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -14,19 +14,19 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
   OnCreate = FormCreate
   DesignSize = (
     461
-    482)
+    536)
   PixelsPerInch = 96
   TextHeight = 13
   object imgBackground: TImage
     Left = 18
     Top = 255
     Width = 427
-    Height = 162
+    Height = 210
     Center = True
     Stretch = True
   end
   object lblAplicarDesconto: TLabel
-    Left = 200
+    Left = 208
     Top = 63
     Width = 126
     Height = 16
@@ -39,7 +39,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     ParentFont = False
   end
   object lblCadastrarEmail: TLabel
-    Left = 67
+    Left = 75
     Top = 149
     Width = 259
     Height = 16
@@ -58,7 +58,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Width = 75
     Height = 25
     Caption = 'OK'
-    TabOrder = 1
+    TabOrder = 0
   end
   object btnCadastrarEmail: TButton
     Left = 354
@@ -66,25 +66,26 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Width = 75
     Height = 25
     Caption = 'CADASTRAR'
-    TabOrder = 3
+    TabOrder = 2
     OnClick = btnCadastrarEmailClick
   end
   object btnSair: TButton
     Left = 354
-    Top = 438
+    Top = 492
     Width = 75
     Height = 25
     Anchors = [akRight, akBottom]
     Caption = 'SAIR'
-    TabOrder = 0
+    TabOrder = 1
     OnClick = btnSairClick
+    ExplicitTop = 438
   end
   object pnlPlanoDeFundo: TPanel
     Left = 18
-    Top = 192
+    Top = 184
     Width = 427
     Height = 41
-    TabOrder = 2
+    TabOrder = 3
     object lblMudarPlanoFundo: TLabel
       Left = 159
       Top = 12
@@ -116,7 +117,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     TabOrder = 4
     object lblProgramaBandeja: TLabel
       Left = 107
-      Top = 14
+      Top = 12
       Width = 211
       Height = 16
       Caption = 'DEIXAR PROGRAMA NA BANDEJA'
