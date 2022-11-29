@@ -24,6 +24,7 @@ type
     menuRelatoriosProdutos: TMenuItem;
     menuRelatoriosPedidos: TMenuItem;
     imgBackground: TImage;
+    ttiProgramaBandeja: TTrayIcon;
     procedure FormCreate(Sender: TObject);
     procedure menuCadastrosProdutosClick(Sender: TObject);
     procedure menuCadastrosClientesClick(Sender: TObject);
@@ -34,9 +35,11 @@ type
     procedure menuConfiguracaoClick(Sender: TObject);
 
   private
+   { Private declarations }
+    procedure atualizarPlanoDeFundo();
 
-  procedure atualizarPlanoDeFundo();
-    { Private declarations }
+    procedure configurarProgramaBandeja ();
+
   public
     { Public declarations }
   end;
@@ -50,6 +53,17 @@ implementation
 
 
 {$R *.dfm}
+
+procedure TfrmPrincipal.configurarProgramaBandeja;
+begin
+  const programaBandeja = TArquivoIni.LerIni('SERVER','programaBandeja');
+  if programaBandeja = 'true' then
+    ttiProgramaBandeja.Visible:=True;
+
+  if programaBandeja = 'false' then
+    ttiProgramaBandeja.Visible:=false;
+
+end;
 
 procedure TfrmPrincipal.atualizarPlanoDeFundo;
 begin
@@ -73,13 +87,14 @@ begin
     TArquivoIni.AtualizarIni('SERVER', 'Password', 'ciih');
     TArquivoIni.AtualizarIni('SERVER', 'Database', 'TesteDelphi');
 
-
     TArquivoIni.AtualizarIni('SERVER', 'caminhoImagemBackground', '');
 
     TArquivoIni.AtualizarIni('SERVER', 'emailEnvioRelatorios', '');
     TArquivoIni.AtualizarIni('SERVER', 'nomeEnvioRelatorios', '');
 
     TArquivoIni.AtualizarIni('SERVER', 'liberarDesconto', 'true');
+
+    TArquivoIni.AtualizarIni('SERVER', 'programaBandeja', 'true');
 
     MessageDlg('Arquivo '+ TArquivoIni.ArquivoIni +' CRIADO com sucesso' +#13+
                'CONFIGURE o arquivo antes de inicializar a aplicação',MtInformation,[mbok],0);
@@ -112,6 +127,7 @@ begin
 end;
 
   atualizarPlanoDeFundo;
+  configurarProgramaBandeja;
 end;
 
 procedure TfrmPrincipal.menuCadastrosClientesClick(Sender: TObject);
@@ -172,7 +188,6 @@ end;
 procedure TfrmPrincipal.menuRelatoriosProdutosClick(Sender: TObject);
 begin
   try
-
       frmTelaFiltroRelProdutos := TfrmTelaFiltroRelProdutos.Create(Self);
       frmTelaFiltroRelProdutos.ShowModal;
 
@@ -183,7 +198,9 @@ begin
       frmRelProdutos.QryProdutos.Open;
       frmRelProdutos.Relatorio.PreviewModal;
   finally
+
     frmTelaFiltroRelProdutos.Release;
+
   end;
 end;
 

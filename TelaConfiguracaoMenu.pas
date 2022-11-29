@@ -12,31 +12,32 @@ type
   TfrmTelaConfiguracaoMenu = class(TForm)
     lblAplicarDesconto: TLabel;
     btnAplicarDescontos: TButton;
-    lblProgramaBandeja: TLabel;
-    btnProgramaBandeja: TButton;
     lblCadastrarEmail: TLabel;
     btnCadastrarEmail: TButton;
     btnSair: TButton;
     OpenDialog1: TOpenDialog;
     imgBackground: TImage;
-    pnlPlanoDeFundo: TPanel;
-    lblMudarPlanoFundo: TLabel;
-    btnBuscarImagem: TButton;
-    pnlProgramaBandeja: TPanel;
     btnRetirarDescontos: TButton;
     lblStatusDesconto: TLabel;
+    Label1: TLabel;
+    btnMostrarProgramaBandeja: TButton;
+    btnEsconderProgramaBandeja: TButton;
+    Label2: TLabel;
+    Button3: TButton;
     procedure btnBuscarImagemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCadastrarEmailClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
-    procedure btnProgramaBandejaClick(Sender: TObject);
     procedure btnAplicarDescontosClick(Sender: TObject);
     procedure btnRetirarDescontosClick(Sender: TObject);
+    procedure btnMostrarProgramaBandejaClick(Sender: TObject);
+    procedure btnEsconderProgramaBandejaClick(Sender: TObject);
 
   private
     { Private declarations }
 
     StatusDesconto : string;
+    StatusBandeja : string;
     procedure AlterarImagemINI(caminhoImagem: string; pTile: Boolean);
     procedure AlterarStatusDescontoTrue;
     procedure AlterarStatusDescontoFalse;
@@ -126,9 +127,32 @@ begin
   frmTelaCadastroEmailRelatorios.Release;
 end;
 
-procedure TfrmTelaConfiguracaoMenu.btnProgramaBandejaClick(Sender: TObject);
+
+procedure TfrmTelaConfiguracaoMenu.btnMostrarProgramaBandejaClick(
+  Sender: TObject);
 begin
-  Application.Minimize;
+  TArquivoIni.AtualizarIni('SERVER', 'programaBandeja', 'true');
+
+  StatusBandeja := TArquivoIni.LerIni('SERVER','programaBandeja');
+
+     btnMostrarProgramaBandeja.Enabled:=false;
+     btnEsconderProgramaBandeja.Enabled:=true;
+
+  ShowMessage('Mostrando Programa');
+
+end;
+
+procedure TfrmTelaConfiguracaoMenu.btnEsconderProgramaBandejaClick(
+  Sender: TObject);
+begin
+  TArquivoIni.AtualizarIni('SERVER', 'programaBandeja', 'false');
+  StatusBandeja := TArquivoIni.LerIni('SERVER','programaBandeja');
+
+  btnMostrarProgramaBandeja.Enabled:=true;
+  btnEsconderProgramaBandeja.Enabled:=false;
+
+  ShowMessage('Escondendo Programa');
+
 end;
 
 procedure TfrmTelaConfiguracaoMenu.btnSairClick(Sender: TObject);
@@ -145,15 +169,19 @@ begin
         const imageFromRegistry = Reg.ReadString('','Wallpaper','');
             imgBackground.Picture.LoadFromFile(imageFromRegistry);}
 
-     StatusDesconto := TArquivoIni.LerIni('SERVER','liberarDesconto');
-
+  StatusDesconto := TArquivoIni.LerIni('SERVER','liberarDesconto');
   if StatusDesconto = 'true' then
      AlterarStatusDescontoTrue;
-
-
   if StatusDesconto = 'false' then
      AlterarStatusDescontoFalse;
 
+  StatusBandeja := TArquivoIni.LerIni('SERVER','programaBandeja');
+  if StatusBandeja = 'true' then
+     btnMostrarProgramaBandeja.Enabled:=false;
+     btnEsconderProgramaBandeja.Enabled:=true;
+  if StatusBandeja = 'false' then
+     btnMostrarProgramaBandeja.Enabled:=true;
+     btnEsconderProgramaBandeja.Enabled:=false;
 end;
 
 end.

@@ -3,7 +3,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
   Top = 0
   Caption = 'Configura'#231#245'es'
   ClientHeight = 536
-  ClientWidth = 466
+  ClientWidth = 464
   Color = 15202559
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,7 +13,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
   OldCreateOrder = False
   OnCreate = FormCreate
   DesignSize = (
-    466
+    464
     536)
   PixelsPerInch = 96
   TextHeight = 13
@@ -65,6 +65,32 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object Label1: TLabel
+    Left = 35
+    Top = 100
+    Width = 211
+    Height = 16
+    Caption = 'DEIXAR PROGRAMA NA BANDEJA'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 10053171
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 167
+    Top = 194
+    Width = 157
+    Height = 16
+    Caption = 'MUDAR PLANO DE FUNDO'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 10053171
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object btnAplicarDescontos: TButton
     Tag = 1
     Left = 265
@@ -81,78 +107,19 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Width = 75
     Height = 25
     Caption = 'CADASTRAR'
-    TabOrder = 2
+    TabOrder = 5
     OnClick = btnCadastrarEmailClick
   end
   object btnSair: TButton
-    Left = 359
+    Left = 357
     Top = 492
     Width = 75
     Height = 25
     Anchors = [akRight, akBottom]
     Caption = 'SAIR'
-    TabOrder = 1
+    TabOrder = 4
     OnClick = btnSairClick
     ExplicitLeft = 354
-  end
-  object pnlPlanoDeFundo: TPanel
-    Left = 18
-    Top = 184
-    Width = 427
-    Height = 41
-    TabOrder = 3
-    object lblMudarPlanoFundo: TLabel
-      Left = 159
-      Top = 12
-      Width = 157
-      Height = 16
-      Caption = 'MUDAR PLANO DE FUNDO'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 10053171
-      Font.Height = -13
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object btnBuscarImagem: TButton
-      Left = 336
-      Top = 9
-      Width = 75
-      Height = 25
-      Caption = 'BUSCAR'
-      TabOrder = 0
-      OnClick = btnBuscarImagemClick
-    end
-  end
-  object pnlProgramaBandeja: TPanel
-    Left = 16
-    Top = 91
-    Width = 429
-    Height = 41
-    TabOrder = 4
-    object lblProgramaBandeja: TLabel
-      Left = 107
-      Top = 12
-      Width = 211
-      Height = 16
-      Caption = 'DEIXAR PROGRAMA NA BANDEJA'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 10053171
-      Font.Height = -13
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object btnProgramaBandeja: TButton
-      Tag = 2
-      Left = 338
-      Top = 9
-      Width = 75
-      Height = 25
-      Caption = 'APLICAR'
-      TabOrder = 0
-      OnClick = btnProgramaBandejaClick
-    end
   end
   object btnRetirarDescontos: TButton
     Tag = 1
@@ -161,8 +128,37 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Width = 75
     Height = 25
     Caption = 'RETIRAR'
-    TabOrder = 5
+    TabOrder = 1
     OnClick = btnRetirarDescontosClick
+  end
+  object btnMostrarProgramaBandeja: TButton
+    Tag = 2
+    Left = 266
+    Top = 97
+    Width = 75
+    Height = 25
+    Caption = 'MOSTRAR'
+    TabOrder = 2
+    OnClick = btnMostrarProgramaBandejaClick
+  end
+  object btnEsconderProgramaBandeja: TButton
+    Tag = 2
+    Left = 354
+    Top = 97
+    Width = 75
+    Height = 25
+    Caption = 'ESCONDER'
+    TabOrder = 3
+    OnClick = btnEsconderProgramaBandejaClick
+  end
+  object Button3: TButton
+    Left = 354
+    Top = 191
+    Width = 75
+    Height = 25
+    Caption = 'BUSCAR'
+    TabOrder = 6
+    OnClick = btnBuscarImagemClick
   end
   object OpenDialog1: TOpenDialog
     Filter = 'JPG files|*.jpg'
