@@ -5,12 +5,13 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  Vcl.StdCtrls, Registry, WinProcs, Vcl.ExtCtrls, TelaCadastroEmailRelatorios, cArquivoIni;
+  Vcl.StdCtrls, Registry, WinProcs, Vcl.ExtCtrls, TelaCadastroEmailRelatorios,
+  cArquivoIni, TelaCadastroProdutos;
 
 type
   TfrmTelaConfiguracaoMenu = class(TForm)
     lblAplicarDesconto: TLabel;
-    btnAplicarDesconto: TButton;
+    btnAplicarDescontos: TButton;
     lblProgramaBandeja: TLabel;
     btnProgramaBandeja: TButton;
     lblCadastrarEmail: TLabel;
@@ -22,15 +23,19 @@ type
     lblMudarPlanoFundo: TLabel;
     btnBuscarImagem: TButton;
     pnlProgramaBandeja: TPanel;
+    btnRetirarDescontos: TButton;
     procedure btnBuscarImagemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCadastrarEmailClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnProgramaBandejaClick(Sender: TObject);
+    procedure btnAplicarDescontosClick(Sender: TObject);
+    procedure btnRetirarDescontosClick(Sender: TObject);
 
   private
     { Private declarations }
      procedure AlterarImagemINI(caminhoImagem: string; pTile: Boolean);
+
 
   public
     { Public declarations }
@@ -39,6 +44,7 @@ type
 var
   frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu;
   frmTelaCadastroEmailRelatorios : TfrmTelaCadastroEmailRelatorios;
+
 
 implementation
 
@@ -65,6 +71,21 @@ begin
                                              Reg.Free;
                                                SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, nil, SPIF_SENDWININICHANGE);}
 end;
+
+procedure TfrmTelaConfiguracaoMenu.btnAplicarDescontosClick(Sender: TObject);
+begin
+  TArquivoIni.AtualizarIni('SERVER', 'liberarDesconto', 'true');
+  ShowMessage('Descontos Liberados');
+
+end;
+
+procedure TfrmTelaConfiguracaoMenu.btnRetirarDescontosClick(Sender: TObject);
+begin
+   TArquivoIni.AtualizarIni('SERVER', 'liberarDesconto', 'false');
+   ShowMessage('Descontos Retirados');
+
+end;
+
 
 procedure TfrmTelaConfiguracaoMenu.btnBuscarImagemClick(Sender: TObject);
 begin
@@ -94,7 +115,6 @@ end;
 
 procedure TfrmTelaConfiguracaoMenu.FormCreate(Sender: TObject);
 begin
-
   const caminhoNaIni = TArquivoIni.LerIni('SERVER','caminhoImagemBackground');
   if caminhoNaIni <> '' then
     imgBackground.Picture.LoadFromFile(caminhoNaIni);

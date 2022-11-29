@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   TelaHerancaCadastro, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.Mask,
-  Vcl.ComCtrls, RxToolEdit, cadastroEnum, cProdutos;
+  Vcl.ComCtrls, RxToolEdit, cadastroEnum, cProdutos, cArquivoIni;
 
 type
     TfrmTelaCadastroProdutos = class(TfrmTelaHerancaCadastro)
@@ -34,12 +34,16 @@ type
   private
     { Private declarations }
 
+    DescontoLiberado :string;
     oProduto: TProdutos;
     EstadoCadastro: TEstadoCadastro;
     procedure setEstadoCadastro(const newEstadoCadastro: TEstadoCadastro);
     function getEstadoCadastro: TEstadoCadastro;
     procedure setProduto(const newProduto: TProdutos);
     function getProduto: TProdutos;
+
+
+
 
   public
     constructor Create (AOwner: TComponent; const estadoInicial: TEstadoCadastro; const produtoInicial: TProdutos);
@@ -82,7 +86,11 @@ begin
       oProduto.nome := edtNome.Text;
       oProduto.valor := StrToFloat(edtValor.Text);
       oProduto.quantidade := StrToInt(edtQuantidade.Text);
-      oProduto.descontoPromocional := StrToInt(edtDescontoPromocional.Text);
+
+      if DescontoLiberado = 'true' then
+        oProduto.descontoPromocional := StrToInt(edtDescontoPromocional.Text);
+      if DescontoLiberado = 'false' then
+        oProduto.descontoPromocional := 0;
 
       const inserirSucesso = oProduto.Inserir();
       if inserirSucesso then
@@ -91,6 +99,7 @@ begin
          ShowMessage('Ocorreu um ERRO');
       Close;
     end
+
     else if EstadoCadastro = cadastroEnum.ecEditar then begin
       oProduto.nome := edtNome.Text;
       oProduto.valor := StrToFloat(edtValor.Text);
@@ -117,16 +126,28 @@ end;
 procedure TfrmTelaCadastroProdutos.FormCreate(Sender: TObject);
 begin
   inherited;
+
+   DescontoLiberado :=  TArquivoIni.LerIni('SERVER','liberarDesconto');
+  if DescontoLiberado = 'true' then begin
+      edtDescontoPromocional.Visible:=True;
+      lblDescontoPromocional.Visible:=True;
+
+  end
+  else if DescontoLiberado = 'false' then begin
+      edtDescontoPromocional.Visible:=False;
+      lblDescontoPromocional.Visible:=False;
+  end;
+
   //verificar qual estado inicial para abrir a tela
   if EstadoCadastro = cadastroEnum.ecCadastrar then PrepararModoCadastro()
   else if EstadoCadastro = cadastroEnum.ecEditar then PrepararModoEdicao()
-  else if EstadoCadastro = cadastroEnum.ecVisualizar then PrepararModoVisualizacao()
+  else if EstadoCadastro = cadastroEnum.ecVisualizar then PrepararModoVisualizacao();
+
 end;
 
 procedure TfrmTelaCadastroProdutos.PrepararModoCadastro();
 begin
     EstadoCadastro := ecCadastrar;
-    frmTelaCadastroProdutos.Caption := 'Cadastrando novo Produto';
 
     edtInclusao.Visible := false;
     edtEdicao.Visible := false;
@@ -139,7 +160,6 @@ procedure TfrmTelaCadastroProdutos.PrepararModoEdicao();
 begin
 
     EstadoCadastro := ecEditar;
-    frmTelaCadastroProdutos.Caption := 'Editando Produto';
     edtNome.Enabled:= true;
     edtValor.Enabled:= true;
     edtQuantidade.Enabled:= true;
@@ -165,7 +185,6 @@ procedure TfrmTelaCadastroProdutos.PrepararModoVisualizacao();
 begin
     //desabilitar todos os inputs pro ser modo visualizacao
     EstadoCadastro := ecVisualizar;
-    frmTelaCadastroProdutos.Caption := 'Visualizando Produto';
     edtNome.Enabled:= false;
     edtValor.Enabled:= false;
     edtQuantidade.Enabled:= false;

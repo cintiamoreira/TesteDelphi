@@ -26,11 +26,11 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Stretch = True
   end
   object lblAplicarDesconto: TLabel
-    Left = 208
-    Top = 63
-    Width = 126
+    Left = 18
+    Top = 60
+    Width = 236
     Height = 16
-    Caption = 'APLICAR DESCONTO'
+    Caption = 'LIBERAR DESCONTO PARA PRODUTOS'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 10053171
     Font.Height = -13
@@ -51,14 +51,15 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object btnAplicarDesconto: TButton
+  object btnAplicarDescontos: TButton
     Tag = 1
-    Left = 354
-    Top = 60
+    Left = 266
+    Top = 57
     Width = 75
     Height = 25
-    Caption = 'OK'
+    Caption = 'LIBERAR'
     TabOrder = 0
+    OnClick = btnAplicarDescontosClick
   end
   object btnCadastrarEmail: TButton
     Left = 354
@@ -78,7 +79,6 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Caption = 'SAIR'
     TabOrder = 1
     OnClick = btnSairClick
-    ExplicitTop = 438
   end
   object pnlPlanoDeFundo: TPanel
     Left = 18
@@ -139,9 +139,19 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
       OnClick = btnProgramaBandejaClick
     end
   end
+  object btnRetirarDescontos: TButton
+    Tag = 1
+    Left = 354
+    Top = 57
+    Width = 75
+    Height = 25
+    Caption = 'RETIRAR'
+    TabOrder = 5
+    OnClick = btnRetirarDescontosClick
+  end
   object OpenDialog1: TOpenDialog
     Filter = 'JPG files|*.jpg'
-    Left = 48
-    Top = 32
+    Left = 40
+    Top = 16
   end
 end
