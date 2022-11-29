@@ -42,9 +42,6 @@ type
     procedure setProduto(const newProduto: TProdutos);
     function getProduto: TProdutos;
 
-
-
-
   public
     constructor Create (AOwner: TComponent; const estadoInicial: TEstadoCadastro; const produtoInicial: TProdutos);
     { Public declarations }

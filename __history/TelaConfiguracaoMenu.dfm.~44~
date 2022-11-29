@@ -59,6 +59,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Height = 25
     Caption = 'LIBERAR'
     TabOrder = 0
+    OnClick = btnAplicarDescontosClick
   end
   object btnCadastrarEmail: TButton
     Left = 354
@@ -146,6 +147,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Height = 25
     Caption = 'RETIRAR'
     TabOrder = 5
+    OnClick = btnRetirarDescontosClick
   end
   object OpenDialog1: TOpenDialog
     Filter = 'JPG files|*.jpg'

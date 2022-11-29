@@ -24,6 +24,7 @@ type
     btnBuscarImagem: TButton;
     pnlProgramaBandeja: TPanel;
     btnRetirarDescontos: TButton;
+    lblStatusDesconto: TLabel;
     procedure btnBuscarImagemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCadastrarEmailClick(Sender: TObject);
@@ -34,7 +35,11 @@ type
 
   private
     { Private declarations }
-     procedure AlterarImagemINI(caminhoImagem: string; pTile: Boolean);
+
+    StatusDesconto : string;
+    procedure AlterarImagemINI(caminhoImagem: string; pTile: Boolean);
+    procedure AlterarStatusDescontoTrue;
+    procedure AlterarStatusDescontoFalse;
 
 
   public
@@ -49,6 +54,20 @@ var
 implementation
 
 {$R *.dfm}
+procedure TfrmTelaConfiguracaoMenu.AlterarStatusDescontoFalse;
+begin
+   lblStatusDesconto.Caption := 'DESCONTOS DESATIVADOS';
+   btnAplicarDescontos.Enabled:=true;
+   btnRetirarDescontos.Enabled:=false;
+end;
+
+procedure TfrmTelaConfiguracaoMenu.AlterarStatusDescontoTrue;
+begin
+  lblStatusDesconto.Caption := 'DESCONTOS ATIVADOS';
+  btnAplicarDescontos.Enabled:=false;
+  btnRetirarDescontos.Enabled:=true;
+end;
+
 procedure TfrmTelaConfiguracaoMenu.AlterarImagemINI(caminhoImagem: string; pTile: Boolean);
 var Reg : TRegIniFile;
 begin
@@ -75,14 +94,18 @@ end;
 procedure TfrmTelaConfiguracaoMenu.btnAplicarDescontosClick(Sender: TObject);
 begin
   TArquivoIni.AtualizarIni('SERVER', 'liberarDesconto', 'true');
-  ShowMessage('Descontos Liberados');
+
+  StatusDesconto := TArquivoIni.LerIni('SERVER','liberarDesconto');
+  AlterarStatusDescontoTrue;
 
 end;
 
 procedure TfrmTelaConfiguracaoMenu.btnRetirarDescontosClick(Sender: TObject);
 begin
    TArquivoIni.AtualizarIni('SERVER', 'liberarDesconto', 'false');
-   ShowMessage('Descontos Retirados');
+
+   StatusDesconto := TArquivoIni.LerIni('SERVER','liberarDesconto');
+   AlterarStatusDescontoFalse;
 
 end;
 
@@ -121,6 +144,16 @@ begin
     {const Reg = TRegIniFile.Create('Control Panel\Desktop');
         const imageFromRegistry = Reg.ReadString('','Wallpaper','');
             imgBackground.Picture.LoadFromFile(imageFromRegistry);}
+
+     StatusDesconto := TArquivoIni.LerIni('SERVER','liberarDesconto');
+
+  if StatusDesconto = 'true' then
+     AlterarStatusDescontoTrue;
+
+
+  if StatusDesconto = 'false' then
+     AlterarStatusDescontoFalse;
+
 end;
 
 end.

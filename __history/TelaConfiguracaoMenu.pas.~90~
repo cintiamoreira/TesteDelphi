@@ -5,12 +5,13 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  Vcl.StdCtrls, Registry, WinProcs, Vcl.ExtCtrls, TelaCadastroEmailRelatorios, cArquivoIni;
+  Vcl.StdCtrls, Registry, WinProcs, Vcl.ExtCtrls, TelaCadastroEmailRelatorios,
+  cArquivoIni, TelaCadastroProdutos;
 
 type
   TfrmTelaConfiguracaoMenu = class(TForm)
     lblAplicarDesconto: TLabel;
-    btnAplicarDesconto: TButton;
+    btnAplicarDescontos: TButton;
     lblProgramaBandeja: TLabel;
     btnProgramaBandeja: TButton;
     lblCadastrarEmail: TLabel;
@@ -22,16 +23,23 @@ type
     lblMudarPlanoFundo: TLabel;
     btnBuscarImagem: TButton;
     pnlProgramaBandeja: TPanel;
-    Label1: TLabel;
+    btnRetirarDescontos: TButton;
+    lblStatusDesconto: TLabel;
     procedure btnBuscarImagemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCadastrarEmailClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnProgramaBandejaClick(Sender: TObject);
+    procedure btnAplicarDescontosClick(Sender: TObject);
+    procedure btnRetirarDescontosClick(Sender: TObject);
 
   private
     { Private declarations }
-     procedure AlterarImagemINI(caminhoImagem: string; pTile: Boolean);
+
+    StatusDesconto : string;
+    procedure AlterarImagemINI(caminhoImagem: string; pTile: Boolean);
+    procedure AlterarBotaoAplicarDesconto;
+
 
   public
     { Public declarations }
@@ -41,9 +49,17 @@ var
   frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu;
   frmTelaCadastroEmailRelatorios : TfrmTelaCadastroEmailRelatorios;
 
+
 implementation
 
 {$R *.dfm}
+procedure TfrmTelaConfiguracaoMenu.AlterarBotaoAplicarDesconto;
+begin
+  lblStatusDesconto.Caption := 'DESCONTOS ATIVADOS';
+  btnAplicarDescontos.Enabled:=false;
+  btnRetirarDescontos.Enabled:=true;
+end;
+
 procedure TfrmTelaConfiguracaoMenu.AlterarImagemINI(caminhoImagem: string; pTile: Boolean);
 var Reg : TRegIniFile;
 begin
@@ -66,6 +82,32 @@ begin
                                              Reg.Free;
                                                SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, nil, SPIF_SENDWININICHANGE);}
 end;
+
+procedure TfrmTelaConfiguracaoMenu.btnAplicarDescontosClick(Sender: TObject);
+begin
+  TArquivoIni.AtualizarIni('SERVER', 'liberarDesconto', 'true');
+
+  StatusDesconto := TArquivoIni.LerIni('SERVER','liberarDesconto');
+  AlterarBotaoAplicarDesconto;
+
+  ShowMessage('Descontos Liberados');
+
+
+end;
+
+procedure TfrmTelaConfiguracaoMenu.btnRetirarDescontosClick(Sender: TObject);
+begin
+   TArquivoIni.AtualizarIni('SERVER', 'liberarDesconto', 'false');
+
+   StatusDesconto := TArquivoIni.LerIni('SERVER','liberarDesconto');
+
+   lblStatusDesconto.Caption := 'DESCONTOS DESATIVADOS';
+   btnAplicarDescontos.Enabled:=true;
+   btnRetirarDescontos.Enabled:=false;
+   ShowMessage('Descontos Retirados');
+
+end;
+
 
 procedure TfrmTelaConfiguracaoMenu.btnBuscarImagemClick(Sender: TObject);
 begin
@@ -95,13 +137,25 @@ end;
 
 procedure TfrmTelaConfiguracaoMenu.FormCreate(Sender: TObject);
 begin
-
   const caminhoNaIni = TArquivoIni.LerIni('SERVER','caminhoImagemBackground');
   if caminhoNaIni <> '' then
     imgBackground.Picture.LoadFromFile(caminhoNaIni);
     {const Reg = TRegIniFile.Create('Control Panel\Desktop');
         const imageFromRegistry = Reg.ReadString('','Wallpaper','');
             imgBackground.Picture.LoadFromFile(imageFromRegistry);}
+
+     StatusDesconto := TArquivoIni.LerIni('SERVER','liberarDesconto');
+
+  if StatusDesconto = 'true' then begin
+    AlterarBotaoAplicarDesconto;
+  end;
+
+  if StatusDesconto = 'false' then   begin
+     lblStatusDesconto.Caption := 'DESCONTOS DESATIVADOS';
+     btnAplicarDescontos.Enabled:=true;
+     btnRetirarDescontos.Enabled:=false;
+  end;
+
 end;
 
 end.

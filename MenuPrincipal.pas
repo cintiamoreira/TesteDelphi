@@ -79,6 +79,8 @@ begin
     TArquivoIni.AtualizarIni('SERVER', 'emailEnvioRelatorios', '');
     TArquivoIni.AtualizarIni('SERVER', 'nomeEnvioRelatorios', '');
 
+    TArquivoIni.AtualizarIni('SERVER', 'liberarDesconto', 'true');
+
     MessageDlg('Arquivo '+ TArquivoIni.ArquivoIni +' CRIADO com sucesso' +#13+
                'CONFIGURE o arquivo antes de inicializar a aplicação',MtInformation,[mbok],0);
     Application.Terminate;

@@ -3,7 +3,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
   Top = 0
   Caption = 'Configura'#231#245'es'
   ClientHeight = 536
-  ClientWidth = 461
+  ClientWidth = 466
   Color = 15202559
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,7 +13,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
   OldCreateOrder = False
   OnCreate = FormCreate
   DesignSize = (
-    461
+    466
     536)
   PixelsPerInch = 96
   TextHeight = 13
@@ -51,9 +51,23 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object lblStatusDesconto: TLabel
+    Left = 324
+    Top = 24
+    Width = 105
+    Height = 13
+    Alignment = taRightJustify
+    Caption = 'STATUS DESCONTO'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 1508736
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object btnAplicarDescontos: TButton
     Tag = 1
-    Left = 266
+    Left = 265
     Top = 57
     Width = 75
     Height = 25
@@ -71,7 +85,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     OnClick = btnCadastrarEmailClick
   end
   object btnSair: TButton
-    Left = 354
+    Left = 359
     Top = 492
     Width = 75
     Height = 25
@@ -79,6 +93,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Caption = 'SAIR'
     TabOrder = 1
     OnClick = btnSairClick
+    ExplicitLeft = 354
   end
   object pnlPlanoDeFundo: TPanel
     Left = 18

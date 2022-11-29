@@ -3,7 +3,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
   Top = 0
   Caption = 'Configura'#231#245'es'
   ClientHeight = 536
-  ClientWidth = 461
+  ClientWidth = 471
   Color = 15202559
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,7 +13,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
   OldCreateOrder = False
   OnCreate = FormCreate
   DesignSize = (
-    461
+    471
     536)
   PixelsPerInch = 96
   TextHeight = 13
@@ -51,14 +51,22 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object lblStatusDesconto: TLabel
+    Left = 349
+    Top = 24
+    Width = 96
+    Height = 13
+    Caption = 'STATUS DESCONTO'
+  end
   object btnAplicarDescontos: TButton
     Tag = 1
-    Left = 266
+    Left = 265
     Top = 57
     Width = 75
     Height = 25
     Caption = 'LIBERAR'
     TabOrder = 0
+    OnClick = btnAplicarDescontosClick
   end
   object btnCadastrarEmail: TButton
     Left = 354
@@ -70,7 +78,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     OnClick = btnCadastrarEmailClick
   end
   object btnSair: TButton
-    Left = 354
+    Left = 364
     Top = 492
     Width = 75
     Height = 25
@@ -78,6 +86,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Caption = 'SAIR'
     TabOrder = 1
     OnClick = btnSairClick
+    ExplicitLeft = 354
   end
   object pnlPlanoDeFundo: TPanel
     Left = 18
@@ -146,6 +155,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Height = 25
     Caption = 'RETIRAR'
     TabOrder = 5
+    OnClick = btnRetirarDescontosClick
   end
   object OpenDialog1: TOpenDialog
     Filter = 'JPG files|*.jpg'
