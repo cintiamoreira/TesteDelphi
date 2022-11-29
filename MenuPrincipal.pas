@@ -8,7 +8,7 @@ uses
    Vcl.Menus, uDTMConexao, TelaListagemProdutos, TelaListagemPedidos,
    TelaListagemClientes, TelaListagemFuncionarios, uRelProdutos, uRelPedidos,
    TelaFiltroRelPedidos, TelaFiltroRelProdutos, TelaConfiguracaoMenu,
-   Vcl.ExtCtrls, Registry, WinProcs, cArquivoIni, ZDbcIntfs;
+   Vcl.ExtCtrls, Registry, WinProcs, cArquivoIni, ZDbcIntfs, Vcl.AppEvnts;
 
 type
     TfrmPrincipal = class(TForm)
@@ -25,6 +25,7 @@ type
     menuRelatoriosPedidos: TMenuItem;
     imgBackground: TImage;
     ttiProgramaBandeja: TTrayIcon;
+    ApplicationEvents1: TApplicationEvents;
     procedure FormCreate(Sender: TObject);
     procedure menuCadastrosProdutosClick(Sender: TObject);
     procedure menuCadastrosClientesClick(Sender: TObject);
@@ -33,12 +34,12 @@ type
     procedure menuRelatoriosPedidosClick(Sender: TObject);
     procedure menuFuncionariosClick(Sender: TObject);
     procedure menuConfiguracaoClick(Sender: TObject);
+    procedure ApplicationEvents1Minimize(Sender: TObject);
+    procedure ttiProgramaBandejaDblClick(Sender: TObject);
 
   private
    { Private declarations }
     procedure atualizarPlanoDeFundo();
-
-    procedure configurarProgramaBandeja ();
 
   public
     { Public declarations }
@@ -54,15 +55,18 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmPrincipal.configurarProgramaBandeja;
+
+procedure TfrmPrincipal.ApplicationEvents1Minimize(Sender: TObject);
 begin
-  const programaBandeja = TArquivoIni.LerIni('SERVER','programaBandeja');
-  if programaBandeja = 'true' then
-    ttiProgramaBandeja.Visible:=True;
+const programaBandeja = TArquivoIni.LerIni('SERVER','programaBandeja');
+if programaBandeja = 'true' then begin
+  Self.Hide();
+  Self.WindowState := wsMinimized;
+  ttiProgramaBandeja.Visible := True;
+end else if programaBandeja = 'false' then begin
 
-  if programaBandeja = 'false' then
-    ttiProgramaBandeja.Visible:=false;
 
+end;
 end;
 
 procedure TfrmPrincipal.atualizarPlanoDeFundo;
@@ -127,7 +131,6 @@ begin
 end;
 
   atualizarPlanoDeFundo;
-  configurarProgramaBandeja;
 end;
 
 procedure TfrmPrincipal.menuCadastrosClientesClick(Sender: TObject);
@@ -202,6 +205,14 @@ begin
     frmTelaFiltroRelProdutos.Release;
 
   end;
+end;
+
+procedure TfrmPrincipal.ttiProgramaBandejaDblClick(Sender: TObject);
+begin
+  ttiProgramaBandeja.Visible := False;
+  Show();
+  WindowState := wsMaximized;
+  Application.BringToFront();
 end;
 
 end.

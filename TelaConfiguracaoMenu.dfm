@@ -68,9 +68,9 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
   object Label1: TLabel
     Left = 35
     Top = 100
-    Width = 211
+    Width = 218
     Height = 16
-    Caption = 'DEIXAR PROGRAMA NA BANDEJA'
+    Caption = 'DEIXAR PROGRAMA NA BANDEJA?'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 10053171
     Font.Height = -13
@@ -137,7 +137,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Top = 97
     Width = 75
     Height = 25
-    Caption = 'MOSTRAR'
+    Caption = 'SIM'
     TabOrder = 2
     OnClick = btnMostrarProgramaBandejaClick
   end
@@ -147,7 +147,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Top = 97
     Width = 75
     Height = 25
-    Caption = 'ESCONDER'
+    Caption = 'N'#195'O'
     TabOrder = 3
     OnClick = btnEsconderProgramaBandejaClick
   end

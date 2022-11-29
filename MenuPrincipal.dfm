@@ -276,7 +276,13 @@ object frmPrincipal: TfrmPrincipal
       ED27392A7FBFE00995BF792867088734294DAFCAEF659E867C450C133E326665
       ECCA186ED61CD43CABF2635CC6FA23E8BA93FC1FD99BBC367D8CC16B00000000
       49454E44AE426082}
+    OnDblClick = ttiProgramaBandejaDblClick
     Left = 688
     Top = 456
+  end
+  object ApplicationEvents1: TApplicationEvents
+    OnMinimize = ApplicationEvents1Minimize
+    Left = 568
+    Top = 464
   end
 end

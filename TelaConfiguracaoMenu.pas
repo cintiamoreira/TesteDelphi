@@ -135,10 +135,10 @@ begin
 
   StatusBandeja := TArquivoIni.LerIni('SERVER','programaBandeja');
 
-     btnMostrarProgramaBandeja.Enabled:=false;
-     btnEsconderProgramaBandeja.Enabled:=true;
+  btnMostrarProgramaBandeja.Enabled:=false;
+  btnEsconderProgramaBandeja.Enabled:=true;
 
-  ShowMessage('Mostrando Programa');
+  ShowMessage('Programa ficará na bandeja');
 
 end;
 
@@ -151,7 +151,7 @@ begin
   btnMostrarProgramaBandeja.Enabled:=true;
   btnEsconderProgramaBandeja.Enabled:=false;
 
-  ShowMessage('Escondendo Programa');
+  ShowMessage('Programa não ficará na bandeja');
 
 end;
 
@@ -176,12 +176,14 @@ begin
      AlterarStatusDescontoFalse;
 
   StatusBandeja := TArquivoIni.LerIni('SERVER','programaBandeja');
-  if StatusBandeja = 'true' then
+  if StatusBandeja = 'true' then begin
      btnMostrarProgramaBandeja.Enabled:=false;
      btnEsconderProgramaBandeja.Enabled:=true;
-  if StatusBandeja = 'false' then
+  end;
+  if StatusBandeja = 'false' then begin
      btnMostrarProgramaBandeja.Enabled:=true;
      btnEsconderProgramaBandeja.Enabled:=false;
+  end;
 end;
 
 end.
