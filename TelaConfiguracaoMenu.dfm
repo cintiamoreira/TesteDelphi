@@ -3,8 +3,8 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
   Top = 0
   Caption = 'Configura'#231#245'es'
   ClientHeight = 536
-  ClientWidth = 464
-  Color = 15202559
+  ClientWidth = 462
+  Color = 16776176
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -13,7 +13,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
   OldCreateOrder = False
   OnCreate = FormCreate
   DesignSize = (
-    464
+    462
     536)
   PixelsPerInch = 96
   TextHeight = 13
@@ -52,17 +52,20 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     ParentFont = False
   end
   object lblStatusDesconto: TLabel
-    Left = 324
+    Left = 312
     Top = 24
-    Width = 105
+    Width = 115
     Height = 13
     Alignment = taRightJustify
+    Anchors = [akLeft, akTop, akRight]
     Caption = 'STATUS DESCONTO'
+    Color = 15527119
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 1508736
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
+    ParentColor = False
     ParentFont = False
   end
   object Label1: TLabel
@@ -104,14 +107,16 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
   object btnCadastrarEmail: TButton
     Left = 354
     Top = 146
-    Width = 75
+    Width = 79
     Height = 25
+    Anchors = [akLeft, akTop, akRight]
     Caption = 'CADASTRAR'
     TabOrder = 5
     OnClick = btnCadastrarEmailClick
+    ExplicitWidth = 75
   end
   object btnSair: TButton
-    Left = 357
+    Left = 355
     Top = 492
     Width = 75
     Height = 25
@@ -119,17 +124,19 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Caption = 'SAIR'
     TabOrder = 4
     OnClick = btnSairClick
-    ExplicitLeft = 354
+    ExplicitLeft = 357
   end
   object btnRetirarDescontos: TButton
     Tag = 1
     Left = 354
     Top = 57
-    Width = 75
+    Width = 79
     Height = 25
+    Anchors = [akLeft, akTop, akRight]
     Caption = 'RETIRAR'
     TabOrder = 1
     OnClick = btnRetirarDescontosClick
+    ExplicitWidth = 75
   end
   object btnMostrarProgramaBandeja: TButton
     Tag = 2
@@ -145,20 +152,24 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Tag = 2
     Left = 354
     Top = 97
-    Width = 75
+    Width = 79
     Height = 25
+    Anchors = [akLeft, akTop, akRight]
     Caption = 'N'#195'O'
     TabOrder = 3
     OnClick = btnEsconderProgramaBandejaClick
+    ExplicitWidth = 75
   end
-  object Button3: TButton
+  object btnBuscar: TButton
     Left = 354
     Top = 191
-    Width = 75
+    Width = 79
     Height = 25
+    Anchors = [akLeft, akTop, akRight]
     Caption = 'BUSCAR'
     TabOrder = 6
     OnClick = btnBuscarImagemClick
+    ExplicitWidth = 75
   end
   object OpenDialog1: TOpenDialog
     Filter = 'JPG files|*.jpg'

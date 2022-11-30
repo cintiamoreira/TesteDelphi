@@ -40,6 +40,7 @@ begin
     EdtDataInicio.SetFocus;
     abort;
   end;
+
   Close;
 end;
 

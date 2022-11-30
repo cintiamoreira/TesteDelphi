@@ -23,7 +23,8 @@ type
     btnMostrarProgramaBandeja: TButton;
     btnEsconderProgramaBandeja: TButton;
     Label2: TLabel;
-    Button3: TButton;
+    btnBuscar: TButton;
+
     procedure btnBuscarImagemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCadastrarEmailClick(Sender: TObject);
@@ -45,12 +46,12 @@ type
 
   public
     { Public declarations }
+
   end;
 
 var
   frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu;
   frmTelaCadastroEmailRelatorios : TfrmTelaCadastroEmailRelatorios;
-
 
 implementation
 
@@ -72,7 +73,6 @@ end;
 procedure TfrmTelaConfiguracaoMenu.AlterarImagemINI(caminhoImagem: string; pTile: Boolean);
 var Reg : TRegIniFile;
 begin
-
   TArquivoIni.AtualizarIni('SERVER', 'caminhoImagemBackground', caminhoImagem);
   const caminhoNaIni = TArquivoIni.LerIni('SERVER','caminhoImagemBackground');
   imgBackground.Picture.LoadFromFile(caminhoNaIni);

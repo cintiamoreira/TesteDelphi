@@ -88,7 +88,6 @@ inherited frmTelaListagemPedidos: TfrmTelaListagemPedidos
   end
   inherited qryListagem: TZQuery
     Connection = dtmPrincipal.ConexaoDB
-    Active = True
     SQL.Strings = (
       'select * from pedidos')
     Left = 480

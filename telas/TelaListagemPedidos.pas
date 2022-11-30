@@ -19,6 +19,7 @@ type
     qryListagemvalor_total_desconto: TFloatField;
     qryListagemdata_inclusao: TDateTimeField;
     qryListagemdata_edicao: TDateTimeField;
+
     procedure btnCadastrarClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure grdListagemDblClick(Sender: TObject);

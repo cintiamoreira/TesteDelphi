@@ -3,9 +3,9 @@ unit TelaFiltroRelProdutos;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask,
-  RxToolEdit;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  Vcl.StdCtrls, Vcl.Buttons, Vcl.Mask, RxToolEdit;
 
 type
   TfrmTelaFiltroRelProdutos = class(TForm)
@@ -15,8 +15,10 @@ type
     edtDataFim: TDateEdit;
     btnOk: TBitBtn;
     procedure btnOkClick(Sender: TObject);
+
   private
     { Private declarations }
+
   public
     { Public declarations }
   end;
@@ -40,6 +42,7 @@ begin
       EdtDataInicio.SetFocus;
       abort;
     end;
+
     Close;
 end;
 
