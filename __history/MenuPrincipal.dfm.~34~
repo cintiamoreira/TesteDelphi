@@ -24,6 +24,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 499
     Align = alCustom
     Anchors = [akLeft, akTop, akRight, akBottom]
+    AutoSize = True
     Center = True
     Stretch = True
     ExplicitLeft = 24

@@ -17,17 +17,18 @@ object frmPrincipal: TfrmPrincipal
   PixelsPerInch = 96
   TextHeight = 19
   object imgBackground: TImage
-    AlignWithMargins = True
-    Left = 27
-    Top = 27
-    Width = 745
-    Height = 499
-    Align = alCustom
-    Anchors = [akLeft, akTop, akRight, akBottom]
+    Left = 0
+    Top = 0
+    Width = 794
+    Height = 549
+    Align = alClient
+    AutoSize = True
     Center = True
     Stretch = True
-    ExplicitLeft = 24
-    ExplicitTop = 24
+    ExplicitLeft = 1
+    ExplicitTop = 8
+    ExplicitWidth = 771
+    ExplicitHeight = 515
   end
   object mainPrincipal: TMainMenu
     Left = 720

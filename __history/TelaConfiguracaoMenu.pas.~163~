@@ -23,7 +23,8 @@ type
     btnMostrarProgramaBandeja: TButton;
     btnEsconderProgramaBandeja: TButton;
     Label2: TLabel;
-    Button3: TButton;
+    btnBuscar: TButton;
+
     procedure btnBuscarImagemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnCadastrarEmailClick(Sender: TObject);
@@ -36,7 +37,6 @@ type
   private
     { Private declarations }
 
-    ttiProgramaBandejaMenuPrincipal: TTrayIcon;
     StatusDesconto : string;
     StatusBandeja : string;
     procedure AlterarImagemINI(caminhoImagem: string; pTile: Boolean);
@@ -45,23 +45,16 @@ type
 
 
   public
-    constructor Create(AOwner: TComponent; ttiMenuPrincipal: TTrayIcon);
     { Public declarations }
+
   end;
 
 var
   frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu;
   frmTelaCadastroEmailRelatorios : TfrmTelaCadastroEmailRelatorios;
 
-
 implementation
 
-
-constructor TfrmTelaConfiguracaoMenu.Create(AOwner: TComponent; ttiMenuPrincipal: TTrayIcon);
-begin
-    inherited Create(AOwner);
-    ttiProgramaBandejaMenuPrincipal := ttiMenuPrincipal;
-end;
 {$R *.dfm}
 procedure TfrmTelaConfiguracaoMenu.AlterarStatusDescontoFalse;
 begin
@@ -80,7 +73,6 @@ end;
 procedure TfrmTelaConfiguracaoMenu.AlterarImagemINI(caminhoImagem: string; pTile: Boolean);
 var Reg : TRegIniFile;
 begin
-
   TArquivoIni.AtualizarIni('SERVER', 'caminhoImagemBackground', caminhoImagem);
   const caminhoNaIni = TArquivoIni.LerIni('SERVER','caminhoImagemBackground');
   imgBackground.Picture.LoadFromFile(caminhoNaIni);
@@ -146,8 +138,6 @@ begin
   btnMostrarProgramaBandeja.Enabled:=false;
   btnEsconderProgramaBandeja.Enabled:=true;
 
-  ttiProgramaBandejaMenuPrincipal.Visible := true;
-
   ShowMessage('Programa ficará na bandeja');
 
 end;
@@ -160,7 +150,6 @@ begin
 
   btnMostrarProgramaBandeja.Enabled:=true;
   btnEsconderProgramaBandeja.Enabled:=false;
-  ttiProgramaBandejaMenuPrincipal.Visible := false;
 
   ShowMessage('Programa não ficará na bandeja');
 

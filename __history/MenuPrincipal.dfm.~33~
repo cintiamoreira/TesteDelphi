@@ -18,17 +18,16 @@ object frmPrincipal: TfrmPrincipal
   TextHeight = 19
   object imgBackground: TImage
     AlignWithMargins = True
-    Left = 3
-    Top = 3
-    Width = 788
-    Height = 543
-    Align = alClient
+    Left = 27
+    Top = 27
+    Width = 745
+    Height = 499
+    Align = alCustom
+    Anchors = [akLeft, akTop, akRight, akBottom]
     Center = True
     Stretch = True
-    ExplicitLeft = 1
-    ExplicitTop = 8
-    ExplicitWidth = 771
-    ExplicitHeight = 515
+    ExplicitLeft = 24
+    ExplicitTop = 24
   end
   object mainPrincipal: TMainMenu
     Left = 720
@@ -71,7 +70,7 @@ object frmPrincipal: TfrmPrincipal
       end
     end
   end
-  object TrayIcon1: TTrayIcon
+  object ttiProgramaBandeja: TTrayIcon
     Icon.Data = {
       0000010001000000000001002000321900001600000089504E470D0A1A0A0000
       000D49484452000001000000010008060000005C72A866000000097048597300
@@ -276,8 +275,13 @@ object frmPrincipal: TfrmPrincipal
       ED27392A7FBFE00995BF792867088734294DAFCAEF659E867C450C133E326665
       ECCA186ED61CD43CABF2635CC6FA23E8BA93FC1FD99BBC367D8CC16B00000000
       49454E44AE426082}
-    Visible = True
+    OnDblClick = ttiProgramaBandejaDblClick
     Left = 688
     Top = 456
+  end
+  object ApplicationEvents1: TApplicationEvents
+    OnMinimize = ApplicationEvents1Minimize
+    Left = 568
+    Top = 464
   end
 end

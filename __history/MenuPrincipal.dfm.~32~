@@ -23,7 +23,6 @@ object frmPrincipal: TfrmPrincipal
     Width = 745
     Height = 499
     Align = alCustom
-    Anchors = [akLeft, akTop, akRight, akBottom]
     Center = True
     Stretch = True
     ExplicitLeft = 24

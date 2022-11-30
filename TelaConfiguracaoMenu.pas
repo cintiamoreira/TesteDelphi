@@ -19,10 +19,10 @@ type
     imgBackground: TImage;
     btnRetirarDescontos: TButton;
     lblStatusDesconto: TLabel;
-    Label1: TLabel;
+    lblProgramaBandeja: TLabel;
     btnMostrarProgramaBandeja: TButton;
     btnEsconderProgramaBandeja: TButton;
-    Label2: TLabel;
+    lblPlanoDeFundo: TLabel;
     btnBuscar: TButton;
 
     procedure btnBuscarImagemClick(Sender: TObject);

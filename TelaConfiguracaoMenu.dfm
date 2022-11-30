@@ -52,9 +52,9 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     ParentFont = False
   end
   object lblStatusDesconto: TLabel
-    Left = 312
+    Left = 322
     Top = 24
-    Width = 115
+    Width = 105
     Height = 13
     Alignment = taRightJustify
     Anchors = [akLeft, akTop, akRight]
@@ -68,7 +68,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     ParentColor = False
     ParentFont = False
   end
-  object Label1: TLabel
+  object lblProgramaBandeja: TLabel
     Left = 35
     Top = 100
     Width = 218
@@ -81,7 +81,7 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object Label2: TLabel
+  object lblPlanoDeFundo: TLabel
     Left = 167
     Top = 194
     Width = 157
@@ -113,7 +113,6 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Caption = 'CADASTRAR'
     TabOrder = 5
     OnClick = btnCadastrarEmailClick
-    ExplicitWidth = 75
   end
   object btnSair: TButton
     Left = 355
@@ -124,7 +123,6 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Caption = 'SAIR'
     TabOrder = 4
     OnClick = btnSairClick
-    ExplicitLeft = 357
   end
   object btnRetirarDescontos: TButton
     Tag = 1
@@ -136,7 +134,6 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Caption = 'RETIRAR'
     TabOrder = 1
     OnClick = btnRetirarDescontosClick
-    ExplicitWidth = 75
   end
   object btnMostrarProgramaBandeja: TButton
     Tag = 2
@@ -158,7 +155,6 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Caption = 'N'#195'O'
     TabOrder = 3
     OnClick = btnEsconderProgramaBandejaClick
-    ExplicitWidth = 75
   end
   object btnBuscar: TButton
     Left = 354
@@ -169,7 +165,6 @@ object frmTelaConfiguracaoMenu: TfrmTelaConfiguracaoMenu
     Caption = 'BUSCAR'
     TabOrder = 6
     OnClick = btnBuscarImagemClick
-    ExplicitWidth = 75
   end
   object OpenDialog1: TOpenDialog
     Filter = 'JPG files|*.jpg'
