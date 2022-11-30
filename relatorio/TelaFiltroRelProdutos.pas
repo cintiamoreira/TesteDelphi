@@ -19,8 +19,11 @@ type
   private
     { Private declarations }
 
+
   public
     { Public declarations }
+
+
   end;
 
 var
@@ -30,6 +33,7 @@ implementation
 
 {$R *.dfm}
 
+
 procedure TfrmTelaFiltroRelProdutos.btnOkClick(Sender: TObject);
 begin
     if (edtDataFim.Date) < (edtDataInicio.Date) then begin
@@ -37,6 +41,7 @@ begin
       edtDataFim.SetFocus;
       abort;
     end;
+
     if (edtDataFim.Date=0) OR (edtDataInicio.Date=0) then begin
       MessageDlg('Data Inicial ou Final são campos obrigatórios',MtInformation,[mbok],0);
       EdtDataInicio.SetFocus;
@@ -44,6 +49,7 @@ begin
     end;
 
     Close;
+
 end;
 
 end.

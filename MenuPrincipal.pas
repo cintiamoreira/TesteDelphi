@@ -26,6 +26,9 @@ type
     imgBackground: TImage;
     ttiProgramaBandeja: TTrayIcon;
     ApplicationEvents1: TApplicationEvents;
+
+
+
     procedure FormCreate(Sender: TObject);
     procedure menuCadastrosProdutosClick(Sender: TObject);
     procedure menuCadastrosClientesClick(Sender: TObject);
@@ -51,7 +54,6 @@ var
   frmRelPedidos: TfrmRelPedidos;
 
 implementation
-
 
 {$R *.dfm}
 
@@ -174,18 +176,19 @@ end;
 procedure TfrmPrincipal.menuRelatoriosPedidosClick(Sender: TObject);
 begin
   try
-       frmTelaFiltroRelPedidos := TfrmTelaFiltroRelPedidos.Create(Self);
-       frmTelaFiltroRelPedidos.ShowModal;
+    frmTelaFiltroRelPedidos := TfrmTelaFiltroRelPedidos.Create(Self);
+    frmTelaFiltroRelPedidos.ShowModal;
 
-       frmRelPedidos:=TfrmRelPedidos.Create(Self);
-       frmRelPedidos.QryPedidos.Close;
-       frmRelPedidos.QryPedidos.ParamByName('DataInicio').AsDate := frmTelaFiltroRelPedidos.edtDataInicio.Date;
-       frmRelPedidos.QryPedidos.ParamByName('DataFim').AsDate := frmTelaFiltroRelPedidos.edtDataFim.Date;
-       frmRelPedidos.QryPedidos.Open;
-       frmRelPedidos.Relatorio.PreviewModal;
-   finally
+      frmRelPedidos:=TfrmRelPedidos.Create(Self);
+      frmRelPedidos.QryPedidos.Close;
+      frmRelPedidos.QryPedidos.ParamByName('DataInicio').AsDate := frmTelaFiltroRelPedidos.edtDataInicio.Date;
+      frmRelPedidos.QryPedidos.ParamByName('DataFim').AsDate := frmTelaFiltroRelPedidos.edtDataFim.Date;
+      frmRelPedidos.QryPedidos.Open;
+      frmRelPedidos.Relatorio.PreviewModal;
+
+  finally
     frmTelaFiltroRelPedidos.Release;
-   end;
+  end;
 end;
 
 procedure TfrmPrincipal.menuRelatoriosProdutosClick(Sender: TObject);
@@ -194,12 +197,15 @@ begin
       frmTelaFiltroRelProdutos := TfrmTelaFiltroRelProdutos.Create(Self);
       frmTelaFiltroRelProdutos.ShowModal;
 
+
       frmRelProdutos:=TfrmRelProdutos.Create(Self);
       frmRelProdutos.QryProdutos.Close;
       frmRelProdutos.QryProdutos.ParamByName('DataInicio').AsDate := frmTelaFiltroRelProdutos.edtDataInicio.Date;
       frmRelProdutos.QryProdutos.ParamByName('DataFim').AsDate := frmTelaFiltroRelProdutos.edtDataFim.Date;
       frmRelProdutos.QryProdutos.Open;
       frmRelProdutos.Relatorio.PreviewModal;
+
+
   finally
 
     frmTelaFiltroRelProdutos.Release;
