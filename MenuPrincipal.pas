@@ -8,7 +8,8 @@ uses
    Vcl.Menus, uDTMConexao, TelaListagemProdutos, TelaListagemPedidos,
    TelaListagemClientes, TelaListagemFuncionarios, uRelProdutos, uRelPedidos,
    TelaFiltroRelPedidos, TelaFiltroRelProdutos, TelaConfiguracaoMenu,
-   Vcl.ExtCtrls, Registry, WinProcs, cArquivoIni, ZDbcIntfs, Vcl.AppEvnts;
+   Vcl.ExtCtrls, Registry, WinProcs, cArquivoIni, ZDbcIntfs, Vcl.AppEvnts,
+  Vcl.StdCtrls;
 
 type
     TfrmPrincipal = class(TForm)
@@ -26,6 +27,7 @@ type
     imgBackground: TImage;
     ttiProgramaBandeja: TTrayIcon;
     ApplicationEvents1: TApplicationEvents;
+    lblIniPath: TLabel;
 
 
 
@@ -84,6 +86,15 @@ end;
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
 
+  lblIniPath.Caption := 'ArquivoIni: ' + TArquivoIni.ArquivoIni + #13+'caminhoZeosDLL: ' +
+      TArquivoIni.LerIni('SERVER','caminhoZeosDLL') + #13+ 'HostName: ' +  //Arquivo DLL do ZEOS
+      TArquivoIni.LerIni('SERVER','HostName') + #13 + 'Port: ' + //Instancia do SQLServer
+      TArquivoIni.LerIni('SERVER','Port') + #13 +'User: ' +  //Porta do SQL Server
+      TArquivoIni.LerIni('SERVER','User') + #13 +'Password: ' +  //Usuario do Banco de Dados
+      TArquivoIni.LerIni('SERVER','Password') + #13 +'Database: ' +  //Senha do Usuário do banco
+      TArquivoIni.LerIni('SERVER','DataBase');  //Nome do Banco de Dados
+  ;
+
   if not FileExists(TArquivoIni.ArquivoIni) then
   begin
     TArquivoIni.AtualizarIni('SERVER', 'TipoDataBase', 'MSSQL');
@@ -101,6 +112,8 @@ begin
     TArquivoIni.AtualizarIni('SERVER', 'liberarDesconto', 'true');
 
     TArquivoIni.AtualizarIni('SERVER', 'programaBandeja', 'true');
+    TArquivoIni.AtualizarIni('SERVER', 'caminhoZeosDLL', ExtractFilePath(ParamStr(0)) + 'ntwdblib.dll');
+
 
     MessageDlg('Arquivo '+ TArquivoIni.ArquivoIni +' CRIADO com sucesso' +#13+
                'CONFIGURE o arquivo antes de inicializar a aplicação',MtInformation,[mbok],0);
@@ -119,12 +132,14 @@ begin
       SQLHourGlass:=False;
       if TArquivoIni.LerIni('SERVER','TipoDataBase')='MSSQL' then
          Protocol:='mssql';  //Protocolo do banco de dados
-      LibraryLocation:='C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\ntwdblib.dll';
+      //LibraryLocation:='C:\Users\cinti\Desktop\Projetos Delphi\TesteDelphi\Win32\Debug\ntwdblib.dll';
+      LibraryLocation:= TArquivoIni.LerIni('SERVER','caminhoZeosDLL'); //Arquivo DLL do ZEOS
       HostName:= TArquivoIni.LerIni('SERVER','HostName'); //Instancia do SQLServer
       Port    := StrToInt(TArquivoIni.LerIni('SERVER','Port'));  //Porta do SQL Server
       User    := TArquivoIni.LerIni('SERVER','User');  //Usuario do Banco de Dados
       Password:= TArquivoIni.LerIni('SERVER','Password');  //Senha do Usuário do banco
-      Database:= TArquivoIni.LerIni('SERVER','DataBase');;  //Nome do Banco de Dados
+      Database:= TArquivoIni.LerIni('SERVER','DataBase');  //Nome do Banco de Dados
+
       AutoCommit:= True;
       TransactIsolationLevel:=tiReadCommitted;
       Connected:=True;  //Faz a Conexão do Banco

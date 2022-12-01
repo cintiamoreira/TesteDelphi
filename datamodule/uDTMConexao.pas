@@ -3,11 +3,12 @@ unit uDTMConexao;
 interface
 
 uses
-  System.SysUtils, System.Classes, ZAbstractConnection, ZConnection;
+  System.SysUtils, System.Classes, ZAbstractConnection, ZConnection, cArquivoIni;
 
 type
   TdtmPrincipal = class(TDataModule)
     ConexaoDB: TZConnection;
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -22,5 +23,11 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TdtmPrincipal.DataModuleCreate(Sender: TObject);
+begin
+  const caminhoDLL = TArquivoIni.LerIni('SERVER','caminhoZeosDLL');
+  ConexaoDB.LibraryLocation:=caminhoDLL;
+end;
 
 end.

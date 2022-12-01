@@ -18,16 +18,26 @@ object frmPrincipal: TfrmPrincipal
   TextHeight = 19
   object imgBackground: TImage
     AlignWithMargins = True
-    Left = 27
-    Top = 27
-    Width = 745
-    Height = 499
-    Align = alCustom
-    Anchors = [akLeft, akTop, akRight, akBottom]
+    Left = 3
+    Top = 3
+    Width = 788
+    Height = 524
+    Align = alClient
     Center = True
     Stretch = True
-    ExplicitLeft = 24
-    ExplicitTop = 24
+    ExplicitLeft = -5
+    ExplicitTop = -2
+    ExplicitWidth = 791
+    ExplicitHeight = 543
+  end
+  object lblIniPath: TLabel
+    Left = 0
+    Top = 530
+    Width = 794
+    Height = 19
+    Align = alBottom
+    Caption = 'lblIniPath'
+    ExplicitWidth = 67
   end
   object mainPrincipal: TMainMenu
     Left = 720
